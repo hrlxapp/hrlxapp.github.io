@@ -174,10 +174,12 @@
     font-size:clamp(21px,3.2vw,30px); font-weight:600; color:var(--text);
     margin:0 auto 20px; max-width:620px; letter-spacing:-.015em; line-height:1.3;
   }
+  [dir="rtl"] .hero .tagline{ line-height:1.4; }
   .hero .desc{
     font-size:16px; line-height:1.75; color:var(--text-2);
     max-width:540px; margin:0 auto 42px;
   }
+  [dir="rtl"] .hero .desc{ line-height:1.8; }
   .hero-actions{ display:flex; align-items:center; justify-content:center; gap:14px; flex-wrap:wrap; }
   .btn-primary{
     background:var(--text); color:#0A0B0D;
@@ -211,8 +213,8 @@
   .strip-item p{ font-size:14.5px; line-height:1.65; color:var(--text-2); margin:0; }
 
   /* ============ SECTIONS ============ */
-  .section{ padding:110px 0; }
-  .section-head{ max-width:640px; margin:0 auto 60px; text-align:center; }
+  .section{ padding:85px 0; }
+  .section-head{ max-width:640px; margin:0 auto 50px; text-align:center; }
   .section-eyebrow{
     font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
     color:var(--brand); margin-bottom:14px;
@@ -222,8 +224,9 @@
     font-size:clamp(32px,4.6vw,46px); font-weight:700; letter-spacing:-.025em;
     margin:0 0 14px; line-height:1.15;
   }
-  [dir="rtl"] .section-head h2{ font-family:'Tajawal',sans-serif; font-weight:700; letter-spacing:-.015em; }
+  [dir="rtl"] .section-head h2{ font-family:'Tajawal',sans-serif; font-weight:700; letter-spacing:-.015em; line-height:1.25; }
   .section-head p{ font-size:16px; color:var(--text-2); line-height:1.7; margin:0; }
+  [dir="rtl"] .section-head p{ line-height:1.75; }
 
   .reveal{ opacity:0; transform:translateY(26px); transition:opacity .75s var(--ease), transform .75s var(--ease); }
   .reveal.in{ opacity:1; transform:translateY(0); }
@@ -239,7 +242,7 @@
 
   .fp-lead{
     display:grid; grid-template-columns:1.05fr .95fr; gap:56px; align-items:center;
-    margin-bottom:80px;
+    margin-bottom:60px;
   }
   @media (max-width:900px){ .fp-lead{ grid-template-columns:1fr; gap:48px; } }
 
@@ -262,8 +265,9 @@
     font-size:clamp(32px,4.4vw,44px); font-weight:700; letter-spacing:-.025em;
     margin:0 0 18px; line-height:1.12;
   }
-  [dir="rtl"] .fp-lead h3{ font-family:'Tajawal',sans-serif; font-weight:700; letter-spacing:-.015em; }
+  [dir="rtl"] .fp-lead h3{ font-family:'Tajawal',sans-serif; font-weight:700; letter-spacing:-.015em; line-height:1.2; }
   .fp-lead > div > p{ font-size:16.5px; line-height:1.75; color:var(--text-2); margin:0 0 30px; max-width:480px; }
+  [dir="rtl"] .fp-lead > div > p{ line-height:1.8; }
   .fp-actions{ display:flex; gap:12px; flex-wrap:wrap; }
   .btn-product{
     display:inline-flex; align-items:center; gap:9px;
@@ -319,16 +323,17 @@
   }
   @media (max-width:860px){ .fp-features{ grid-template-columns:1fr 1fr; } }
   @media (max-width:480px){ .fp-features{ grid-template-columns:1fr; } }
-  .fp-feature{ background:var(--bg-2); padding:30px 24px; transition:background .25s ease; }
+  .fp-feature{ background:var(--bg-2); padding:30px 24px; transition:background .25s ease; display:flex; flex-direction:column; min-height:200px; }
   .fp-feature:hover{ background:var(--surface); }
   .fp-feature .fi{ width:34px; height:34px; color:var(--p-accent); margin-bottom:16px; }
   .fp-feature .fi svg{ width:22px; height:22px; }
-  .fp-feature h4{ font-size:15px; font-weight:700; margin:0 0 8px; letter-spacing:-.01em; }
-  .fp-feature p{ font-size:13.5px; line-height:1.65; color:var(--text-2); margin:0; }
+  .fp-feature h4{ font-size:15px; font-weight:700; margin:0 0 8px; letter-spacing:-.01em; line-height:1.35; }
+  .fp-feature p{ font-size:13.5px; line-height:1.65; color:var(--text-2); margin:0; flex-grow:1; }
+  [dir="rtl"] .fp-feature h4{ line-height:1.4; }
 
   /* ============ USER BENEFITS ============ */
   .benefits{
-    padding:90px 0 30px;
+    padding:70px 0 25px;
   }
   .benefits-grid{
     display:grid; grid-template-columns:repeat(3,1fr); gap:16px;
@@ -338,21 +343,23 @@
     background:var(--surface); border:1px solid var(--border);
     border-radius:var(--radius-md); padding:28px 26px;
     transition:border-color .3s ease, transform .3s ease;
+    display:flex; flex-direction:column; min-height:220px;
   }
   .benefit:hover{ border-color:var(--border-strong); transform:translateY(-2px); }
   .benefit-icon{
     width:40px; height:40px; border-radius:13px;
     display:flex; align-items:center; justify-content:center;
     color:var(--p-accent); background:var(--p-soft);
-    margin-bottom:18px;
+    margin-bottom:18px; flex-shrink:0;
   }
   .benefit-icon svg{ width:21px; height:21px; }
-  .benefit h4{ font-size:17px; font-weight:700; margin:0 0 9px; letter-spacing:-.01em; }
-  .benefit p{ font-size:14px; line-height:1.7; color:var(--text-2); margin:0; }
+  .benefit h4{ font-size:17px; font-weight:700; margin:0 0 9px; letter-spacing:-.01em; line-height:1.35; }
+  .benefit p{ font-size:14px; line-height:1.7; color:var(--text-2); margin:0; flex-grow:1; }
+  [dir="rtl"] .benefit h4{ line-height:1.4; }
   @media (max-width:760px){ .benefits-grid{ grid-template-columns:1fr; } }
 
   /* ============ CTA ============ */
-  .cta-final{ text-align:center; padding:130px 0; position:relative; overflow:hidden; }
+  .cta-final{ text-align:center; padding:100px 0; position:relative; overflow:hidden; }
   .cta-final::before{
     content:''; position:absolute; inset:0; pointer-events:none;
     background:radial-gradient(ellipse 720px 400px at 50% 50%, rgba(232,199,125,.07), transparent 65%);
@@ -362,8 +369,9 @@
     font-size:clamp(30px,4.6vw,48px); font-weight:700; letter-spacing:-.025em;
     margin:0 0 16px; position:relative;
   }
-  [dir="rtl"] .cta-final h2{ font-family:'Tajawal',sans-serif; font-weight:700; letter-spacing:-.015em; }
+  [dir="rtl"] .cta-final h2{ font-family:'Tajawal',sans-serif; font-weight:700; letter-spacing:-.015em; line-height:1.2; }
   .cta-final p{ font-size:16px; color:var(--text-2); margin:0 0 36px; position:relative; }
+  [dir="rtl"] .cta-final p{ line-height:1.75; }
   .cta-final .hero-actions{ position:relative; }
 
   /* ============ FOOTER ============ */
@@ -387,6 +395,7 @@
     padding-top:26px; border-top:1px solid var(--border);
     font-size:12.5px; color:var(--text-3); flex-wrap:wrap; gap:12px;
   }
+  .footer-bottom .copyright{ display:inline-block; }
   .footer-bottom .fb-links{ display:flex; gap:20px; }
 
   @media (prefers-reduced-motion:reduce){
@@ -402,9 +411,9 @@
   <div class="wrap nav-global-inner">
     <a href="#top" class="brand-mark"><span class="dot"></span>HRLX</a>
     <nav class="nav-links">
-      <a href="#product" data-i18n="nav.product">Apps</a>
-      <a href="#about" data-i18n="nav.about">Why HRLX</a>
-      <a href="#footer" data-i18n="nav.support">Support</a>
+      <a href="/subscriptions" data-i18n="nav.product">App</a>
+      <a href="#about" data-i18n="nav.features">Features</a>
+      <a href="/support" data-i18n="nav.support">Support</a>
     </nav>
     <div class="nav-right">
       <div class="lang-switch">
@@ -422,9 +431,9 @@
     <a href="#top" class="brand-mark"><span class="dot"></span>HRLX</a>
     <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close">&times;</button>
   </div>
-  <a href="#product" data-i18n="nav.product">Apps</a>
-  <a href="#about" data-i18n="nav.about">Why HRLX</a>
-  <a href="#footer" data-i18n="nav.support">Support</a>
+  <a href="/subscriptions" data-i18n="nav.product">App</a>
+  <a href="#about" data-i18n="nav.features">Features</a>
+  <a href="/support" data-i18n="nav.support">Support</a>
 </div>
 
 <!-- Product bar: renders automatically once PRODUCTS holds more than one entry -->
@@ -436,28 +445,13 @@
   <!-- ============ HERO ============ -->
   <section class="hero">
     <div class="wrap hero-inner">
-      <span class="hero-eyebrow"><span class="d"></span><span data-i18n="hero.eyebrow">HRLX — focused business apps</span></span>
+      <span class="hero-eyebrow"><span class="d"></span><span data-i18n="hero.eyebrow">HRLX</span></span>
       <h1 class="disp">HRLX</h1>
-      <p class="tagline" data-i18n="hero.tagline">Focused tools for modern business.</p>
-      <p class="desc" data-i18n="hero.desc">HRLX builds focused business apps around specific jobs, with a shared design language built for clarity, speed, and everyday use.</p>
+      <p class="tagline" data-i18n="hero.tagline">Business tools, made clearer.</p>
+      <p class="desc" data-i18n="hero.desc">HRLX builds focused business apps with a clear, fast experience designed for everyday use.</p>
       <div class="hero-actions">
-        <a href="#product" class="btn-primary" data-i18n="hero.cta1">View Product</a>
-        <a href="#about" class="btn-secondary" data-i18n="hero.cta2">About HRLX</a>
-      </div>
-
-      <div class="brand-strip reveal">
-        <div class="strip-item">
-          <div class="k disp" data-i18n="strip.k1">Focus</div>
-          <p data-i18n="strip.p1">Every HRLX app is built around one job, not a pile of features nobody asked for.</p>
-        </div>
-        <div class="strip-item">
-          <div class="k disp" data-i18n="strip.k2">Craft</div>
-          <p data-i18n="strip.p2">Native, fast, and designed down to the last detail — spacing, motion, and typography included.</p>
-        </div>
-        <div class="strip-item">
-          <div class="k disp" data-i18n="strip.k3">Clarity</div>
-          <p data-i18n="strip.p3">Clear dashboards, clear states, and the information you need where you expect it to be.</p>
-        </div>
+        <a href="/subscriptions" class="btn-primary" data-i18n="hero.cta1">Explore the app</a>
+        <a href="#about" class="btn-secondary" data-i18n="hero.cta2">Features</a>
       </div>
     </div>
   </section>
@@ -467,15 +461,14 @@
     <div class="wrap featured-inner">
       <div class="fp-lead reveal">
         <div>
-          <span class="fp-badge" data-i18n="fp.badge">Featured Product</span>
           <div class="fp-icon">
             <svg viewBox="0 0 24 24" fill="none"><path d="M12 2.5a4.6 4.6 0 014.6 4.6v2.8a4.6 4.6 0 01-9.2 0V7.1A4.6 4.6 0 0112 2.5z" stroke="currentColor" stroke-width="1.7"/><path d="M5.6 20.5c1.3-4 3.9-6 6.4-6s5.1 2 6.4 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
           </div>
           <h3 class="disp">HRLX Subscriptions</h3>
-          <p data-i18n="fp.desc">Manage subscribers, renewals, and payments from one place. HRLX Subscriptions keeps every subscription's status current, warns you before a renewal is due, and shows exactly where your revenue stands.</p>
+          <p data-i18n="fp.desc">Manage subscribers, subscriptions, renewals, payments, and subscription status from one clear workspace.</p>
           <div class="fp-actions">
             <a href="/subscriptions" class="btn-product">
-              <span data-i18n="fp.cta">Explore App</span>
+              <span data-i18n="fp.cta">Explore HRLX Subscriptions</span>
               <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
           </div>
@@ -505,22 +498,22 @@
         <div class="fp-feature">
           <div class="fi"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.6" stroke="currentColor" stroke-width="1.7"/><path d="M5.5 19.5c1.2-3.6 3.8-5.4 6.5-5.4s5.3 1.8 6.5 5.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
           <h4 data-i18n="feat.t1">Subscribers</h4>
-          <p data-i18n="feat.d1">Every subscriber, their plan, price, and history on one screen.</p>
+          <p data-i18n="feat.d1">Manage subscriber data and track their details in one place.</p>
         </div>
         <div class="fp-feature">
           <div class="fi"><svg viewBox="0 0 24 24" fill="none"><path d="M20 12a8 8 0 11-2.6-5.9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M20 4v4h-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          <h4 data-i18n="feat.t2">Renewals</h4>
-          <p data-i18n="feat.d2">Know what renews this week before your subscribers do.</p>
+          <h4 data-i18n="feat.t2">Subscriptions & Renewals</h4>
+          <p data-i18n="feat.d2">Track subscription status, dates, and upcoming renewals with clarity.</p>
         </div>
         <div class="fp-feature">
           <div class="fi"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="18" height="12" rx="3" stroke="currentColor" stroke-width="1.7"/><path d="M3 10h18" stroke="currentColor" stroke-width="1.7"/><path d="M7 14.5h3.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
           <h4 data-i18n="feat.t3">Payments</h4>
-          <p data-i18n="feat.d3">Track what's been paid, what's outstanding, and what's overdue.</p>
+          <p data-i18n="feat.d3">Record and track payments and amounts connected to subscribers.</p>
         </div>
         <div class="fp-feature">
           <div class="fi"><svg viewBox="0 0 24 24" fill="none"><path d="M4 20V10M10 20V5M16 20v-7M22 20H2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
-          <h4 data-i18n="feat.t4">Reports</h4>
-          <p data-i18n="feat.d4">Clear numbers on payments, subscription status, and business activity.</p>
+          <h4 data-i18n="feat.t4">At a Glance</h4>
+          <p data-i18n="feat.d4">View statuses and important information without searching across multiple screens.</p>
         </div>
       </div>
     </div>
@@ -531,8 +524,8 @@
     <div class="wrap">
       <div class="section-head reveal">
         <div class="section-eyebrow" data-i18n="benefits.eyebrow">Why HRLX Subscriptions</div>
-        <h2 data-i18n="benefits.title">The important things stay easy to see.</h2>
-        <p data-i18n="benefits.desc">Built for daily use, with the information and actions you need kept close instead of buried behind layers.</p>
+        <h2 data-i18n="benefits.title">Built for clarity and speed.</h2>
+        <p data-i18n="benefits.desc">Everything designed so the information you need is always within reach.</p>
       </div>
 
       <div class="benefits-grid">
@@ -540,8 +533,8 @@
           <div class="benefit-icon">
             <svg viewBox="0 0 24 24" fill="none"><path d="M4 12h16M12 4v16" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
           </div>
-          <h4 data-i18n="benefits.t1">Quick to manage</h4>
-          <p data-i18n="benefits.d1">Add, review, and update subscriber information without turning a simple task into a workflow.</p>
+          <h4 data-i18n="benefits.t1">Quick access to information</h4>
+          <p data-i18n="benefits.d1">Find what you need instantly without navigating through layers.</p>
         </div>
 
         <div class="benefit reveal">
@@ -549,15 +542,15 @@
             <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.7"/><path d="M12 8v4l2.5 1.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
           <h4 data-i18n="benefits.t2">Know what needs attention</h4>
-          <p data-i18n="benefits.d2">Subscription states and upcoming activity stay visible so you can act before details get lost.</p>
+          <p data-i18n="benefits.d2">Important statuses and upcoming events stay visible so nothing slips away.</p>
         </div>
 
         <div class="benefit reveal">
           <div class="benefit-icon">
             <svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4 4L19 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
-          <h4 data-i18n="benefits.t3">Clear by design</h4>
-          <p data-i18n="benefits.d3">A focused interface that keeps the app useful without filling every screen with controls you rarely need.</p>
+          <h4 data-i18n="benefits.t3">Clear, uncluttered interface</h4>
+          <p data-i18n="benefits.d3">Only the controls you use, only the information you need, nothing more.</p>
         </div>
       </div>
     </div>
@@ -567,10 +560,9 @@
   <section class="cta-final">
     <div class="wrap">
       <h2 class="disp reveal" data-i18n="cta.title">HRLX Subscriptions</h2>
-      <p class="reveal" data-i18n="cta.desc">Manage subscribers, renewals, payments, and subscription status from one focused app.</p>
+      <p class="reveal" data-i18n="cta.desc">Manage your subscriptions and subscribers from one clear place.</p>
       <div class="hero-actions reveal">
-        <a href="/subscriptions" class="btn-primary" data-i18n="fp.cta">Explore App</a>
-        <a href="#footer" class="btn-secondary" data-i18n="cta.support">Contact Support</a>
+        <a href="/subscriptions" class="btn-primary" data-i18n="cta.cta">Explore the app</a>
       </div>
     </div>
   </section>
@@ -582,22 +574,17 @@
     <div class="footer-top">
       <div class="footer-brand">
         <div class="brand-mark"><span class="dot"></span>HRLX</div>
-        <p data-i18n="footer.blurb">Focused business apps, designed to stay clear and useful every day.</p>
       </div>
 
       <div class="footer-links">
         <a href="/subscriptions" data-i18n="footer.subs">HRLX Subscriptions</a>
-        <a href="#footer" data-i18n="nav.support">Support</a>
+        <a href="/support" data-i18n="nav.support">Support</a>
         <a href="/privacy" data-i18n="footer.privacy">Privacy</a>
         <a href="/terms" data-i18n="footer.terms">Terms</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <span data-i18n="footer.copy">© 2026 HRLX. All rights reserved.</span>
-      <div class="fb-links">
-        <a href="/privacy" data-i18n="footer.privacy">Privacy</a>
-        <a href="/terms" data-i18n="footer.terms">Terms</a>
-      </div>
+      <span class="copyright" dir="ltr" data-i18n="footer.copy">© 2026 HRLX</span>
     </div>
   </div>
 </footer>
@@ -625,62 +612,52 @@
 
   const CONTENT = {
     en:{ dir:'ltr',
-      nav:{ product:'Apps', about:'Why HRLX', support:'Support', cta:'View Product', overview:'Overview' },
-      hero:{ eyebrow:'HRLX — focused business apps',
-        tagline:'Focused tools for modern business.',
-        desc:'HRLX builds focused business apps around specific jobs, with a shared design language built for clarity, speed, and everyday use.',
-        cta1:'View Product', cta2:'About HRLX' },
-      strip:{ k1:'Focus', p1:'Every HRLX app is built around one job, not a pile of features nobody asked for.',
-        k2:'Craft', p2:'Native, fast, and designed down to the last detail — spacing, motion, and typography included.',
-        k3:'Clarity', p3:'Clear dashboards, clear states, and the information you need where you expect it to be.' },
-      fp:{ badge:'Featured Product',
-        desc:'Manage subscribers, renewals, and payments from one place. HRLX Subscriptions keeps every subscription\u2019s status current, warns you before a renewal is due, and shows exactly where your revenue stands.',
-        cta:'Explore App' },
+      nav:{ product:'App', features:'Features', support:'Support', cta:'View Product', overview:'Overview' },
+      hero:{ eyebrow:'HRLX',
+        tagline:'Business tools, made clearer.',
+        desc:'HRLX builds focused business apps with a clear, fast experience designed for everyday use.',
+        cta1:'Explore the app', cta2:'Features' },
+      fp:{ desc:'Manage subscribers, subscriptions, renewals, payments, and subscription status from one clear workspace.',
+        cta:'Explore HRLX Subscriptions' },
       ph:{ title:'Subscribers', s1:'Active', s1v:'128', s2:'Due soon', s2v:'7', label:'Recent',
         active:'Active', soon:'3 days', expired:'Expired' },
-      feat:{ t1:'Subscribers', d1:'Every subscriber, their plan, price, and history on one screen.',
-        t2:'Renewals', d2:'Know what renews this week before your subscribers do.',
-        t3:'Payments', d3:'Track what\u2019s been paid, what\u2019s outstanding, and what\u2019s overdue.',
-        t4:'Reports', d4:'Clear numbers on payments, subscription status, and business activity.' },
+      feat:{ t1:'Subscribers', d1:'Manage subscriber data and track their details in one place.',
+        t2:'Subscriptions & Renewals', d2:'Track subscription status, dates, and upcoming renewals with clarity.',
+        t3:'Payments', d3:'Record and track payments and amounts connected to subscribers.',
+        t4:'At a Glance', d4:'View statuses and important information without searching across multiple screens.' },
       benefits:{ eyebrow:'Why HRLX Subscriptions',
-        title:'The important things stay easy to see.',
-        desc:'Built for daily use, with the information and actions you need kept close instead of buried behind layers.',
-        t1:'Quick to manage', d1:'Add, review, and update subscriber information without turning a simple task into a workflow.',
-        t2:'Know what needs attention', d2:'Subscription states and upcoming activity stay visible so you can act before details get lost.',
-        t3:'Clear by design', d3:'A focused interface that keeps the app useful without filling every screen with controls you rarely need.' },
-      cta:{ title:'HRLX Subscriptions', desc:'Manage subscribers, renewals, payments, and subscription status from one focused app.', support:'Contact Support' },
-      footer:{ blurb:'Focused business apps, designed to stay clear and useful every day.',
-        product:'Apps', subs:'HRLX Subscriptions', company:'Company', legal:'Legal',
-        privacy:'Privacy', terms:'Terms', copy:'© 2026 HRLX. All rights reserved.' }
+        title:'Built for clarity and speed.',
+        desc:'Everything designed so the information you need is always within reach.',
+        t1:'Quick access to information', d1:'Find what you need instantly without navigating through layers.',
+        t2:'Know what needs attention', d2:'Important statuses and upcoming events stay visible so nothing slips away.',
+        t3:'Clear, uncluttered interface', d3:'Only the controls you use, only the information you need, nothing more.' },
+      cta:{ title:'HRLX Subscriptions', desc:'Manage your subscriptions and subscribers from one clear place.', cta:'Explore the app' },
+      footer:{ subs:'HRLX Subscriptions',
+        privacy:'Privacy', terms:'Terms', copy:'© 2026 HRLX' }
     },
     ar:{ dir:'rtl',
-      nav:{ product:'التطبيقات', about:'لماذا HRLX', support:'الدعم', cta:'استعرض المنتج', overview:'نظرة عامة' },
-      hero:{ eyebrow:'HRLX — تطبيقات أعمال مركّزة',
-        tagline:'أدوات مركّزة لإدارة أعمال حديثة.',
-        desc:'تبني HRLX تطبيقات أعمال مركّزة حول مهام محددة، ضمن لغة تصميم موحّدة تهدف إلى الوضوح والسرعة وسهولة الاستخدام اليومي.',
-        cta1:'استعرض المنتج', cta2:'عن HRLX' },
-      strip:{ k1:'التركيز', p1:'كل تطبيق من HRLX مبني حول مهمة واحدة، لا حول كومة مزايا لم يطلبها أحد.',
-        k2:'الإتقان', p2:'أداء أصلي وسريع، وتصميم مدروس حتى آخر تفصيل — من المسافات إلى الحركة والخطوط.',
-        k3:'الوضوح', p3:'لوحات واضحة، حالات مفهومة، والمعلومة التي تحتاجها موجودة حيث تتوقعها.' },
-      fp:{ badge:'المنتج المميز',
-        desc:'أدر المشتركين والتجديدات والمدفوعات وحالات الاشتراك من مكان واحد. يقرّب HRLX Subscriptions التفاصيل المهمة، ويساعدك على ملاحظة التجديدات القادمة، ويعطيك صورة واضحة عمّا يحتاج انتباهك.',
-        cta:'استكشف التطبيق' },
+      nav:{ product:'التطبيق', features:'المزايا', support:'الدعم', cta:'استعرض المنتج', overview:'نظرة عامة' },
+      hero:{ eyebrow:'HRLX',
+        tagline:'أدوات أعمال، بوضوح أكثر.',
+        desc:'تبني HRLX تطبيقات أعمال مركّزة بتجربة واضحة وسريعة للاستخدام اليومي.',
+        cta1:'استكشف التطبيق', cta2:'المزايا' },
+      fp:{ desc:'إدارة المشتركين والاشتراكات والتجديدات والمدفوعات وحالات الاشتراك من مساحة واحدة واضحة.',
+        cta:'استكشف HRLX Subscriptions' },
       ph:{ title:'المشتركون', s1:'نشط', s1v:'١٢٨', s2:'قرب الاستحقاق', s2v:'٧', label:'الأحدث',
         active:'نشط', soon:'٣ أيام', expired:'منتهي' },
-      feat:{ t1:'المشتركون', d1:'كل مشترك وخطته وسعره وسجلّه في شاشة واحدة.',
-        t2:'التجديدات', d2:'اعرف ما سيتجدّد هذا الأسبوع قبل أن يسألك مشتركوك.',
-        t3:'المدفوعات', d3:'تابع ما تم دفعه وما زال مستحقًا وما تأخّر سداده.',
-        t4:'التقارير', d4:'أرقام واضحة عن المدفوعات وحالات الاشتراك ونشاط العمل.' },
+      feat:{ t1:'المشتركين', d1:'إدارة بيانات المشتركين ومتابعة تفاصيلهم في مكان واحد.',
+        t2:'الاشتراكات والتجديدات', d2:'متابعة حالة الاشتراك والتواريخ والتجديدات القادمة بوضوح.',
+        t3:'المدفوعات', d3:'تسجيل ومتابعة المدفوعات والمبالغ المرتبطة بالمشتركين.',
+        t4:'نظرة سريعة', d4:'عرض الحالات والمعلومات المهمة بدون الحاجة للبحث بين عدة شاشات.' },
       benefits:{ eyebrow:'لماذا HRLX Subscriptions',
-        title:'الأشياء المهمة تبقى واضحة أمامك.',
-        desc:'مصمم للاستخدام اليومي، بحيث تبقى المعلومات والإجراءات التي تحتاجها قريبة بدل أن تضيع بين طبقات كثيرة.',
-        t1:'إدارة أسرع', d1:'أضف بيانات المشترك وراجعها وعدّلها بدون تحويل المهمة البسيطة إلى خطوات كثيرة.',
-        t2:'اعرف ما يحتاج انتباهك', d2:'حالات الاشتراك والنشاط القادم تبقى واضحة حتى تتصرف قبل أن تضيع التفاصيل.',
-        t3:'وضوح مقصود', d3:'واجهة مركّزة تبقي التطبيق مفيدًا بدون ملء كل شاشة بخيارات نادرًا ما تحتاجها.' },
-      cta:{ title:'HRLX Subscriptions', desc:'أدر المشتركين والتجديدات والمدفوعات وحالات الاشتراك من تطبيق واحد مركّز.', support:'تواصل مع الدعم' },
-      footer:{ blurb:'تطبيقات أعمال مركّزة، مصممة لتبقى واضحة ومفيدة كل يوم.',
-        product:'التطبيقات', subs:'HRLX Subscriptions', company:'الشركة', legal:'قانوني',
-        privacy:'الخصوصية', terms:'الشروط', copy:'© 2026 HRLX. جميع الحقوق محفوظة.' }
+        title:'مصمّم للوضوح والسرعة.',
+        desc:'كل شيء مصمّم بحيث تبقى المعلومات التي تحتاجها دائمًا في متناول يديك.',
+        t1:'سرعة الوصول للمعلومة', d1:'جد ما تحتاجه فورًا بدون التنقل عبر طبقات.',
+        t2:'معرفة ما يحتاج الانتباه', d2:'الحالات المهمة والأحداث القادمة تبقى واضحة حتى لا يضيع شيء.',
+        t3:'واجهة واضحة وغير مزدحمة', d3:'فقط الأيقونات التي تستخدمها، فقط المعلومات التي تحتاجها، لا أكثر.' },
+      cta:{ title:'HRLX Subscriptions', desc:'أدر اشتراكاتك ومشتركيك من مكان واحد واضح.', cta:'استكشف التطبيق' },
+      footer:{ subs:'HRLX Subscriptions',
+        privacy:'الخصوصية', terms:'الشروط', copy:'© 2026 HRLX' }
     }
   };
 
