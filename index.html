@@ -28,6 +28,9 @@
     --p-accent:#8B7CFA;
     --p-soft:rgba(139,124,250,.14);
     --p-glow:rgba(139,124,250,.35);
+    /* shared HRLX master accent — live-updated per frame by the color engine */
+    --hrlx-accent-rgb:139,124,250;
+    --hrlx-accent-color:rgb(139,124,250);
     --radius-lg:28px;
     --radius-md:16px;
     --ease:cubic-bezier(.22,.8,.28,1);
@@ -63,7 +66,7 @@
   }
   .nav-global-inner{ display:flex; align-items:center; justify-content:space-between; height:72px; }
   .brand-mark{
-    display:flex; align-items:center; gap:10px;
+    display:flex; align-items:center; gap:8px;
     font-family:'Space Grotesk',sans-serif;
     font-weight:700; font-size:20px; letter-spacing:-.01em;
   }
@@ -73,6 +76,14 @@
     background:var(--brand);
     box-shadow:0 0 12px rgba(232,199,125,.55);
   }
+  .brand-icon{
+    position:relative; width:28px; height:28px; flex-shrink:0; display:inline-block;
+  }
+  .brand-icon img{
+    position:absolute; inset:0; width:100%; height:100%;
+    display:block; object-fit:contain;
+  }
+  .footer-brand .brand-icon{ width:24px; height:24px; opacity:.9; }
   .nav-links{ display:flex; align-items:center; gap:34px; }
   .nav-links a{ font-size:14.5px; font-weight:500; color:var(--text-2); transition:color .2s ease; }
   .nav-links a:hover{ color:var(--text); }
@@ -254,10 +265,10 @@
   }
   .fp-icon{
     width:60px; height:60px; border-radius:18px;
-    background:var(--p-soft); color:var(--p-accent);
+    background:rgba(var(--hrlx-accent-rgb),.14); color:var(--hrlx-accent-color);
     display:flex; align-items:center; justify-content:center;
     margin-bottom:22px;
-    box-shadow:0 0 34px var(--p-glow);
+    box-shadow:0 0 34px rgba(var(--hrlx-accent-rgb),.35);
   }
   .fp-icon svg{ width:28px; height:28px; }
   .fp-lead h3{
@@ -271,10 +282,10 @@
   .fp-actions{ display:flex; gap:12px; flex-wrap:wrap; }
   .btn-product{
     display:inline-flex; align-items:center; gap:9px;
-    background:var(--p-accent); color:#0A0B0D;
+    background:var(--hrlx-accent-color); color:#0A0B0D;
     font-size:14.5px; font-weight:700;
     padding:15px 26px; border-radius:100px; border:none;
-    box-shadow:0 12px 30px -10px var(--p-glow);
+    box-shadow:0 12px 30px -10px rgba(var(--hrlx-accent-rgb),.35);
     transition:transform .16s ease, filter .2s ease;
   }
   .btn-product:hover{ transform:translateY(-1px); filter:brightness(1.08); }
@@ -325,7 +336,7 @@
   @media (max-width:480px){ .fp-features{ grid-template-columns:1fr; } }
   .fp-feature{ background:var(--bg-2); padding:30px 24px; transition:background .25s ease; display:flex; flex-direction:column; min-height:200px; }
   .fp-feature:hover{ background:var(--surface); }
-  .fp-feature .fi{ width:34px; height:34px; color:var(--p-accent); margin-bottom:16px; }
+  .fp-feature .fi{ width:34px; height:34px; color:var(--hrlx-accent-color); margin-bottom:16px; }
   .fp-feature .fi svg{ width:22px; height:22px; }
   .fp-feature h4{ font-size:15px; font-weight:700; margin:0 0 8px; letter-spacing:-.01em; line-height:1.35; }
   .fp-feature p{ font-size:13.5px; line-height:1.65; color:var(--text-2); margin:0; flex-grow:1; }
@@ -349,7 +360,7 @@
   .benefit-icon{
     width:40px; height:40px; border-radius:13px;
     display:flex; align-items:center; justify-content:center;
-    color:var(--p-accent); background:var(--p-soft);
+    color:var(--hrlx-accent-color); background:rgba(var(--hrlx-accent-rgb),.14);
     margin-bottom:18px; flex-shrink:0;
   }
   .benefit-icon svg{ width:21px; height:21px; }
@@ -360,10 +371,6 @@
 
   /* ============ CTA ============ */
   .cta-final{ text-align:center; padding:100px 0; position:relative; overflow:hidden; }
-  .cta-final::before{
-    content:''; position:absolute; inset:0; pointer-events:none;
-    background:radial-gradient(ellipse 720px 400px at 50% 50%, rgba(232,199,125,.07), transparent 65%);
-  }
   .cta-final h2{
     font-family:'Space Grotesk',sans-serif;
     font-size:clamp(30px,4.6vw,48px); font-weight:700; letter-spacing:-.025em;
@@ -373,6 +380,7 @@
   .cta-final p{ font-size:16px; color:var(--text-2); margin:0 0 36px; position:relative; }
   [dir="rtl"] .cta-final p{ line-height:1.75; }
   .cta-final .hero-actions{ position:relative; }
+  .cta-final > .wrap{ position:relative; z-index:1; }
 
   /* ============ FOOTER ============ */
   footer{ border-top:1px solid var(--border); padding:70px 0 34px; }
@@ -398,9 +406,78 @@
   .footer-bottom .copyright{ display:inline-block; }
   .footer-bottom .fb-links{ display:flex; gap:20px; }
 
+  /* ============ LIQUID GLASS AMBIENT BACKGROUNDS ============ */
+  @keyframes drift-1{
+    0%{ background-position:0% 0%; }
+    25%{ background-position:40% 30%; }
+    50%{ background-position:30% 60%; }
+    75%{ background-position:-20% 40%; }
+    100%{ background-position:0% 0%; }
+  }
+  @keyframes drift-2{
+    0%{ background-position:100% 100%; }
+    25%{ background-position:50% 70%; }
+    50%{ background-position:60% 20%; }
+    75%{ background-position:110% 50%; }
+    100%{ background-position:100% 100%; }
+  }
+  @keyframes drift-3{
+    0%{ background-position:50% 50%; }
+    25%{ background-position:20% 80%; }
+    50%{ background-position:80% 40%; }
+    75%{ background-position:30% 10%; }
+    100%{ background-position:50% 50%; }
+  }
+
+  /* Persistent ambient blob elements for continuous spatial motion + color interpolation */
+  .ambient-blob{
+    position:absolute; inset:0; pointer-events:none; z-index:0;
+    background-size:200% 200%;
+    will-change:background-color;
+  }
+
+  .hero, .featured, .benefits, .cta-final{ position:relative; }
+  .hero-inner, .featured-inner, .benefits > .wrap, .cta-final > .wrap{ position:relative; z-index:1; }
+
+  /* Hero section blobs */
+  .hero .ambient-blob:nth-child(1){
+    animation:drift-1 23s ease-in-out infinite;
+  }
+  .hero .ambient-blob:nth-child(2){
+    animation:drift-2 31s ease-in-out infinite;
+  }
+
+  /* Featured section blobs */
+  .featured .ambient-blob:nth-child(1){
+    animation:drift-2 27s ease-in-out infinite;
+  }
+  .featured .ambient-blob:nth-child(2){
+    animation:drift-3 37s ease-in-out infinite;
+  }
+
+  /* Benefits section blobs */
+  .benefits .ambient-blob:nth-child(1){
+    animation:drift-3 29s ease-in-out infinite;
+  }
+  .benefits .ambient-blob:nth-child(2){
+    animation:drift-1 25s ease-in-out infinite;
+  }
+
+  /* CTA section blobs */
+  .cta-final .ambient-blob:nth-child(1){
+    animation:drift-1 26s ease-in-out infinite;
+  }
+  .cta-final .ambient-blob:nth-child(2){
+    animation:drift-3 34s ease-in-out infinite;
+  }
+
   @media (prefers-reduced-motion:reduce){
     html{ scroll-behavior:auto; }
     .reveal{ transition:none; opacity:1; transform:none; }
+    .ambient-blob{
+      animation:none;
+      background-image:radial-gradient(ellipse 900px 580px, rgba(139,124,250,.12), transparent 68%) !important;
+    }
   }
 </style>
 </head>
@@ -409,7 +486,7 @@
 <!-- ============ GLOBAL NAVBAR ============ -->
 <header class="nav-global">
   <div class="wrap nav-global-inner">
-    <a href="#top" class="brand-mark"><span class="dot"></span>HRLX</a>
+    <a href="#top" class="brand-mark"><span class="brand-icon"><img class="icon-a" src="assets/images/brand/hrlx-purple.png" alt="HRLX"><img class="icon-b" src="assets/images/brand/hrlx-blue.png" alt="" style="opacity:0"></span>HRLX</a>
     <nav class="nav-links">
       <a href="/subscriptions" data-i18n="nav.product">App</a>
       <a href="#about" data-i18n="nav.features">Features</a>
@@ -428,7 +505,7 @@
 
 <div class="mobile-menu" id="mobileMenu">
   <div class="mobile-menu-head">
-    <a href="#top" class="brand-mark"><span class="dot"></span>HRLX</a>
+    <a href="#top" class="brand-mark"><span class="brand-icon"><img class="icon-a" src="assets/images/brand/hrlx-purple.png" alt="HRLX"><img class="icon-b" src="assets/images/brand/hrlx-blue.png" alt="" style="opacity:0"></span>HRLX</a>
     <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close">&times;</button>
   </div>
   <a href="/subscriptions" data-i18n="nav.product">App</a>
@@ -444,6 +521,8 @@
 <main id="top">
   <!-- ============ HERO ============ -->
   <section class="hero">
+    <div class="ambient-blob" style="background-image:radial-gradient(ellipse 920px 620px, rgba(139,124,250,.18), transparent 65%),radial-gradient(ellipse 760px 480px, rgba(139,124,250,.18), transparent 70%)"></div>
+    <div class="ambient-blob" style="background-image:radial-gradient(ellipse 620px 380px, rgba(139,124,250,.18), transparent 72%)"></div>
     <div class="wrap hero-inner">
       <span class="hero-eyebrow"><span class="d"></span><span data-i18n="hero.eyebrow">HRLX</span></span>
       <h1 class="disp">HRLX</h1>
@@ -458,6 +537,8 @@
 
   <!-- ============ FEATURED PRODUCT ============ -->
   <section class="section featured" id="product">
+    <div class="ambient-blob" style="background-image:radial-gradient(ellipse 880px 560px, rgba(139,124,250,.18), transparent 66%),radial-gradient(ellipse 700px 450px, rgba(139,124,250,.18), transparent 71%)"></div>
+    <div class="ambient-blob" style="background-image:radial-gradient(ellipse 580px 340px, rgba(139,124,250,.18), transparent 68%)"></div>
     <div class="wrap featured-inner">
       <div class="fp-lead reveal">
         <div>
@@ -521,6 +602,8 @@
 
   <!-- ============ USER BENEFITS ============ -->
   <section class="benefits" id="about">
+    <div class="ambient-blob" style="background-image:radial-gradient(ellipse 900px 580px, rgba(139,124,250,.18), transparent 64%),radial-gradient(ellipse 720px 420px, rgba(139,124,250,.18), transparent 72%)"></div>
+    <div class="ambient-blob" style="background-image:radial-gradient(ellipse 650px 380px, rgba(139,124,250,.18), transparent 70%)"></div>
     <div class="wrap">
       <div class="section-head reveal">
         <div class="section-eyebrow" data-i18n="benefits.eyebrow">Why HRLX Subscriptions</div>
@@ -558,6 +641,8 @@
 
   <!-- ============ CTA ============ -->
   <section class="cta-final">
+    <div class="ambient-blob" style="background-image:radial-gradient(ellipse 680px 380px, rgba(139,124,250,.18), transparent 64%),radial-gradient(ellipse 540px 300px, rgba(139,124,250,.18), transparent 71%)"></div>
+    <div class="ambient-blob" style="background-image:radial-gradient(ellipse 420px 240px, rgba(139,124,250,.18), transparent 68%)"></div>
     <div class="wrap">
       <h2 class="disp reveal" data-i18n="cta.title">HRLX Subscriptions</h2>
       <p class="reveal" data-i18n="cta.desc">Manage your subscriptions and subscribers from one clear place.</p>
@@ -573,7 +658,7 @@
   <div class="wrap">
     <div class="footer-top">
       <div class="footer-brand">
-        <div class="brand-mark"><span class="dot"></span>HRLX</div>
+        <div class="brand-mark"><span class="brand-icon"><img class="icon-a" src="assets/images/brand/hrlx-purple.png" alt="HRLX"><img class="icon-b" src="assets/images/brand/hrlx-blue.png" alt="" style="opacity:0"></span>HRLX</div>
       </div>
 
       <div class="footer-links">
@@ -715,6 +800,109 @@
   document.getElementById('hamburgerBtn').addEventListener('click', ()=>{ mm.classList.add('open'); document.getElementById('hamburgerBtn').setAttribute('aria-expanded','true'); });
   document.getElementById('mobileMenuClose').addEventListener('click', ()=>{ mm.classList.remove('open'); document.getElementById('hamburgerBtn').setAttribute('aria-expanded','false'); });
   mm.querySelectorAll('a').forEach(a=> a.addEventListener('click', ()=>{ mm.classList.remove('open'); document.getElementById('hamburgerBtn').setAttribute('aria-expanded','false'); }));
+
+  /* ============ MASTER HRLX COLOR ENGINE ============
+     ONE source of truth: currentColorIndex, nextColorIndex, transitionProgress.
+     Icon crossfade, badge dot, and ambient blobs all read these same values
+     on every animation frame. No independent timers, no discrete color swaps. */
+  const HRLX_COLORS = [
+    { img:'assets/images/brand/hrlx-purple.png', rgb:[139,124,250] },
+    { img:'assets/images/brand/hrlx-blue.png', rgb:[91,124,250] },
+    { img:'assets/images/brand/hrlx-cyan.png', rgb:[77,191,250] },
+    { img:'assets/images/brand/hrlx-green.png', rgb:[77,184,127] },
+    { img:'assets/images/brand/hrlx-pink.png', rgb:[250,77,216] },
+    { img:'assets/images/brand/hrlx-red.png', rgb:[250,77,77] },
+    { img:'assets/images/brand/hrlx-orange.png', rgb:[250,139,77] },
+    { img:'assets/images/brand/hrlx-gold.png', rgb:[232,199,125] }
+  ];
+
+  HRLX_COLORS.forEach(c=>{ const img = new Image(); img.src = c.img; });
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function interpolateRGB(rgb1, rgb2, progress){
+    return [
+      Math.round(rgb1[0] + (rgb2[0] - rgb1[0]) * progress),
+      Math.round(rgb1[1] + (rgb2[1] - rgb1[1]) * progress),
+      Math.round(rgb1[2] + (rgb2[2] - rgb1[2]) * progress)
+    ];
+  }
+
+  const HRLX_CYCLE_MS = 8500; /* duration of one color-to-color transition */
+  let hrlxCurrentIndex = 0;
+  let hrlxNextIndex = 1;
+  let hrlxProgress = 0;
+
+  const hrlxAmbientBlobs = document.querySelectorAll('.ambient-blob');
+  const hrlxBrandIcons = document.querySelectorAll('.brand-icon');
+  const hrlxBadgeDot = document.querySelector('.hero-eyebrow .d');
+  const hrlxRoot = document.documentElement;
+
+  /* Single render function driven purely by the master state above */
+  function renderHRLXFrame(){
+    const current = HRLX_COLORS[hrlxCurrentIndex];
+    const next = HRLX_COLORS[hrlxNextIndex];
+    const [r,g,b] = interpolateRGB(current.rgb, next.rgb, hrlxProgress);
+
+    /* Persistent blobs: only the color changes, position/animation untouched */
+    const blobColor = `rgba(${r},${g},${b},.18)`;
+    hrlxAmbientBlobs.forEach(blob=>{
+      const bgImage = blob.getAttribute('style').match(/background-image:[^;]+/)[0];
+      const updated = bgImage.replace(/rgba\([^)]+\)/g, blobColor);
+      blob.style.backgroundImage = updated.replace('background-image:', '');
+    });
+
+    if(hrlxBadgeDot) hrlxBadgeDot.style.backgroundColor = `rgb(${r},${g},${b})`;
+
+    /* Shared accent exposed as CSS vars for the selected accent icons (fp-icon, fp-feature .fi, benefit-icon) */
+    hrlxRoot.style.setProperty('--hrlx-accent-rgb', `${r},${g},${b}`);
+    hrlxRoot.style.setProperty('--hrlx-accent-color', `rgb(${r},${g},${b})`);
+
+    /* Icon crossfade: current/next PNG opacity from the exact same progress value */
+    hrlxBrandIcons.forEach(wrap=>{
+      const imgA = wrap.querySelector('.icon-a');
+      const imgB = wrap.querySelector('.icon-b');
+      if(imgA.dataset.idx !== String(hrlxCurrentIndex)){ imgA.src = current.img; imgA.dataset.idx = hrlxCurrentIndex; }
+      if(imgB.dataset.idx !== String(hrlxNextIndex)){ imgB.src = next.img; imgB.dataset.idx = hrlxNextIndex; }
+      imgA.style.opacity = 1 - hrlxProgress;
+      imgB.style.opacity = hrlxProgress;
+    });
+  }
+
+  /* Single continuous animation clock anchored to wall-clock time so every
+     page/tab renders the exact same color phase; no setInterval/setTimeout chains */
+  function hrlxMasterTick(){
+    const elapsed = Date.now();
+    const cycleCount = Math.floor(elapsed / HRLX_CYCLE_MS);
+    const cyclePos = elapsed - cycleCount * HRLX_CYCLE_MS;
+
+    hrlxCurrentIndex = cycleCount % HRLX_COLORS.length;
+    hrlxNextIndex = (hrlxCurrentIndex + 1) % HRLX_COLORS.length;
+    /* continuous eased progress 0→1, no hold+cut */
+    hrlxProgress = (1 - Math.cos(Math.PI * cyclePos / HRLX_CYCLE_MS)) / 2;
+
+    renderHRLXFrame();
+    requestAnimationFrame(hrlxMasterTick);
+  }
+
+  if(!prefersReducedMotion){
+    requestAnimationFrame(hrlxMasterTick);
+  } else {
+    /* reduced motion: static default purple, no spatial motion, no color progression */
+    const purple = HRLX_COLORS[0];
+    hrlxAmbientBlobs.forEach(blob=>{
+      blob.style.background = 'radial-gradient(ellipse 900px 580px, rgba(139,124,250,.12), transparent 68%)';
+    });
+    if(hrlxBadgeDot) hrlxBadgeDot.style.backgroundColor = `rgb(${purple.rgb[0]},${purple.rgb[1]},${purple.rgb[2]})`;
+    hrlxRoot.style.setProperty('--hrlx-accent-rgb', purple.rgb.join(','));
+    hrlxRoot.style.setProperty('--hrlx-accent-color', `rgb(${purple.rgb[0]},${purple.rgb[1]},${purple.rgb[2]})`);
+    hrlxBrandIcons.forEach(wrap=>{
+      const imgA = wrap.querySelector('.icon-a');
+      const imgB = wrap.querySelector('.icon-b');
+      imgA.src = purple.img; imgA.style.opacity = 1;
+      imgB.style.opacity = 0;
+    });
+  }
 
   const io = new IntersectionObserver(entries=>{
     entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });

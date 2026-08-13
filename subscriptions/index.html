@@ -24,12 +24,42 @@
     .card{
       margin-top:70px;padding:34px;border:1px solid rgba(255,255,255,.08);
       background:#131418;border-radius:22px;
+      position:relative;
     }
+    @keyframes bg-drift-1{
+      0%{ background-position:0% 0%; }
+      25%{ background-position:35% 25%; }
+      50%{ background-position:25% 55%; }
+      75%{ background-position:-15% 35%; }
+      100%{ background-position:0% 0%; }
+    }
+    @keyframes bg-drift-2{
+      0%{ background-position:100% 100%; }
+      25%{ background-position:45% 65%; }
+      50%{ background-position:55% 15%; }
+      75%{ background-position:105% 45%; }
+      100%{ background-position:100% 100%; }
+    }
+    .ambient-blob{
+      position:absolute; inset:0; pointer-events:none; z-index:0;
+      border-radius:22px;
+      background-size:200% 200%;
+      will-change:background-color;
+    }
+    .ambient-blob:nth-child(1){ animation:bg-drift-1 25s ease-in-out infinite; }
+    .ambient-blob:nth-child(2){ animation:bg-drift-2 33s ease-in-out infinite; }
+    .card-content{ position:relative; z-index:1; }
     h1{font-size:40px;margin:0 0 14px}
     p{color:#9A9B9F;line-height:1.9;font-size:17px;margin:0}
     .back{
       display:inline-flex;margin-top:28px;padding:12px 18px;border-radius:999px;
       border:1px solid rgba(255,255,255,.12);color:#F2F2F0;text-decoration:none;
+    }
+    @media (prefers-reduced-motion:reduce){
+      .ambient-blob{
+        animation:none;
+        background-image:radial-gradient(ellipse 600px 380px, rgba(139,124,250,.18), transparent 70%);
+      }
     }
   </style>
 </head>
@@ -39,10 +69,81 @@
       <a class="brand" href="../">HRLX</a>
     </div>
     <main class="card">
-      <h1>HRLX Subscriptions</h1>
-      <p>هذه الصفحة مخصّصة لتفاصيل تطبيق HRLX لإدارة الاشتراكات والمشتركين. سنبني محتواها الكامل لاحقًا باستخدام الواجهات والمزايا الحقيقية للتطبيق.</p>
-      <a class="back" href="../">العودة إلى HRLX</a>
+      <div class="ambient-blob" style="background-image:radial-gradient(ellipse 600px 380px, rgba(139,124,250,.18), transparent 70%),radial-gradient(ellipse 480px 280px, rgba(139,124,250,.18), transparent 68%)"></div>
+      <div class="ambient-blob" style="background-image:radial-gradient(ellipse 420px 260px, rgba(139,124,250,.18), transparent 72%)"></div>
+      <div class="card-content">
+        <h1>HRLX Subscriptions</h1>
+        <p>هذه الصفحة مخصّصة لتفاصيل تطبيق HRLX لإدارة الاشتراكات والمشتركين. سنبني محتواها الكامل لاحقًا باستخدام الواجهات والمزايا الحقيقية للتطبيق.</p>
+        <a class="back" href="../">العودة إلى HRLX</a>
+      </div>
     </main>
   </div>
-</body>
-</html>
+
+  <script>
+  (()=>{
+    const root = document.documentElement;
+    /* ============ MASTER HRLX COLOR ENGINE (same algorithm as homepage) ============
+       ONE source of truth: currentColorIndex, nextColorIndex, transitionProgress.
+       Anchored to wall-clock time so this page renders the same color phase
+       as the homepage. No independent timers, no discrete color swaps. */
+    const HRLX_COLORS = [
+      { rgb:[139,124,250] },
+      { rgb:[91,124,250] },
+      { rgb:[77,191,250] },
+      { rgb:[77,184,127] },
+      { rgb:[250,77,216] },
+      { rgb:[250,77,77] },
+      { rgb:[250,139,77] },
+      { rgb:[232,199,125] }
+    ];
+
+    const HRLX_CYCLE_MS = 8500;
+    let hrlxCurrentIndex = 0;
+    let hrlxNextIndex = 1;
+    let hrlxProgress = 0;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const hrlxAmbientBlobs = document.querySelectorAll('.ambient-blob');
+
+    function interpolateRGB(rgb1, rgb2, progress){
+      return [
+        Math.round(rgb1[0] + (rgb2[0] - rgb1[0]) * progress),
+        Math.round(rgb1[1] + (rgb2[1] - rgb1[1]) * progress),
+        Math.round(rgb1[2] + (rgb2[2] - rgb1[2]) * progress)
+      ];
+    }
+
+    function renderHRLXFrame(){
+      const current = HRLX_COLORS[hrlxCurrentIndex];
+      const next = HRLX_COLORS[hrlxNextIndex];
+      const [r,g,b] = interpolateRGB(current.rgb, next.rgb, hrlxProgress);
+      const blobColor = `rgba(${r},${g},${b},.18)`;
+
+      hrlxAmbientBlobs.forEach(blob=>{
+        const bgImage = blob.getAttribute('style').match(/background-image:[^;]+/)[0];
+        const updated = bgImage.replace(/rgba\([^)]+\)/g, blobColor);
+        blob.style.backgroundImage = updated.replace('background-image:', '');
+      });
+    }
+
+    function hrlxMasterTick(){
+      const elapsed = Date.now();
+      const cycleCount = Math.floor(elapsed / HRLX_CYCLE_MS);
+      const cyclePos = elapsed - cycleCount * HRLX_CYCLE_MS;
+
+      hrlxCurrentIndex = cycleCount % HRLX_COLORS.length;
+      hrlxNextIndex = (hrlxCurrentIndex + 1) % HRLX_COLORS.length;
+      hrlxProgress = (1 - Math.cos(Math.PI * cyclePos / HRLX_CYCLE_MS)) / 2;
+
+      renderHRLXFrame();
+      requestAnimationFrame(hrlxMasterTick);
+    }
+
+    if(!prefersReducedMotion){
+      requestAnimationFrame(hrlxMasterTick);
+    } else {
+      hrlxAmbientBlobs.forEach(blob=>{
+        blob.style.background = 'radial-gradient(ellipse 900px 580px, rgba(139,124,250,.12), transparent 68%)';
+      });
+    }
+  })();
+  </script>
