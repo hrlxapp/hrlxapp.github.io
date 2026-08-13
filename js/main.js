@@ -1,0 +1,5 @@
+/*
+  Shared HRLX site JavaScript.
+  Keep global navigation and shared behavior here once the homepage
+  is split into reusable assets.
+*/

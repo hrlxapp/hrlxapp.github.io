@@ -1,0 +1,30 @@
+HRLX GitHub Pages Structure
+
+hrlxapp.github.io/
+├── index.html
+├── subscriptions/
+│   └── index.html
+├── support/
+│   └── index.html
+├── privacy/
+│   └── index.html
+├── terms/
+│   └── index.html
+├── assets/
+│   ├── images/
+│   │   ├── brand/
+│   │   ├── subscriptions/
+│   │   └── social/
+│   ├── icons/
+│   └── screenshots/
+├── css/
+│   ├── base.css
+│   ├── home.css
+│   └── subscriptions.css
+├── js/
+│   ├── main.js
+│   └── i18n.js
+├── data/
+│   └── products.js
+├── .nojekyll
+└── README.md
