@@ -471,6 +471,75 @@
     animation:drift-3 34s ease-in-out infinite;
   }
 
+  /* ============ IPHONE PORTRAIT REFINEMENTS ============ */
+  @media (max-width:600px) and (orientation:portrait){
+    .wrap{ padding-inline:18px; }
+
+    .nav-global-inner{ height:62px; }
+    .brand-mark{ gap:7px; font-size:19px; }
+    .brand-icon{ width:26px; height:26px; }
+    .nav-right{ gap:8px; }
+    .lang-switch{ padding:2px; }
+    .lang-switch button{ padding:5px 10px; font-size:12px; }
+    .hamburger{ padding:7px; }
+
+    .hero{ padding:78px 0 54px; }
+    .hero-eyebrow{ margin-bottom:22px; padding:6px 14px; }
+    .hero h1{ font-size:clamp(52px,15vw,64px); margin-bottom:16px; }
+    .hero .tagline{ font-size:clamp(20px,6vw,25px); max-width:340px; margin-bottom:14px; line-height:1.35; }
+    .hero .desc{ font-size:15px; line-height:1.7; max-width:330px; margin-bottom:30px; }
+    [dir="rtl"] .hero .desc{ line-height:1.8; }
+    .hero-actions{ gap:10px; }
+    .btn-primary{ padding:13px 20px; font-size:14px; }
+    .btn-secondary{ padding:12px 19px; font-size:14px; }
+
+    .section{ padding:60px 0; }
+    .featured.section{ padding:44px 0 56px; }
+    .fp-lead{ gap:24px; margin-bottom:34px; }
+    .fp-icon{ width:56px; height:56px; margin-bottom:18px; }
+    .fp-lead h3{ font-size:clamp(29px,8.4vw,35px); margin-bottom:10px; }
+    .fp-lead > div > p{ font-size:15.5px; line-height:1.7; max-width:340px; margin-bottom:16px; }
+    [dir="rtl"] .fp-lead > div > p{ line-height:1.8; }
+    .btn-product{ width:100%; justify-content:center; padding:14px 18px; }
+    .phone{ width:clamp(248px,72vw,280px); border-radius:40px; padding:10px; }
+    .phone-screen{ border-radius:31px; min-height:460px; padding:16px 14px 20px; gap:12px; }
+    .fp-feature{ min-height:0; padding:18px 18px; }
+    .fp-feature .fi{ margin-bottom:9px; }
+    .fp-feature h4{ margin-bottom:5px; }
+    .fp-feature p{ line-height:1.58; }
+
+    .benefits{ padding:54px 0 18px; }
+    .section-head{ margin-bottom:34px; }
+    .section-head h2{ font-size:clamp(29px,8vw,35px); margin-bottom:11px; }
+    .section-head p{ font-size:15px; line-height:1.65; }
+    [dir="rtl"] .section-head p{ line-height:1.75; }
+    .benefits-grid{ gap:12px; }
+    .benefit{ min-height:0; padding:22px 20px; }
+    .benefit-icon{ margin-bottom:13px; }
+    .benefit h4{ margin-bottom:6px; }
+    .benefit p{ line-height:1.65; }
+
+    .cta-final{ padding:68px 0; }
+    .cta-final h2{ font-size:clamp(29px,8vw,36px); margin-bottom:12px; }
+    .cta-final p{ font-size:15px; line-height:1.65; margin:0 auto 27px; max-width:320px; }
+    [dir="rtl"] .cta-final p{ line-height:1.75; }
+
+    footer{ padding:40px 0 22px; }
+    .footer-top{ gap:22px; margin-bottom:28px; }
+    .footer-brand .brand-mark{ margin-bottom:0; }
+    .footer-links{ gap:8px 18px; }
+    .footer-links a{ padding:4px 0; }
+    .footer-bottom{ padding-top:18px; }
+
+    .ambient-blob{ background-size:148% 148%; }
+    .hero .ambient-blob:nth-child(1), .featured .ambient-blob:nth-child(1), .benefits .ambient-blob:nth-child(1), .cta-final .ambient-blob:nth-child(1){
+      background-size:136% 136%; opacity:.7;
+    }
+    .hero .ambient-blob:nth-child(2), .featured .ambient-blob:nth-child(2), .benefits .ambient-blob:nth-child(2), .cta-final .ambient-blob:nth-child(2){
+      opacity:.56;
+    }
+  }
+
   @media (prefers-reduced-motion:reduce){
     html{ scroll-behavior:auto; }
     .reveal{ transition:none; opacity:1; transform:none; }
