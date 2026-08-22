@@ -7,143 +7,24 @@
   <title>HRLX Subscriptions — HRLX</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    *{box-sizing:border-box}
-    body{
-      margin:0;background:#0A0B0D;color:#F2F2F0;
-      font-family:'Tajawal',sans-serif;
-      -webkit-font-smoothing:antialiased;
-    }
-    .wrap{width:min(860px,calc(100% - 40px));margin:auto;padding:32px 0 80px}
-    .top{
-      min-height:70px;display:flex;align-items:center;justify-content:space-between;
-      border-bottom:1px solid rgba(255,255,255,.08)
-    }
-    .brand{font-weight:800;letter-spacing:.04em;text-decoration:none;color:#F2F2F0}
-    .card{
-      margin-top:70px;padding:34px;border:1px solid rgba(255,255,255,.08);
-      background:#131418;border-radius:22px;
-      position:relative;
-    }
-    @keyframes bg-drift-1{
-      0%{ background-position:0% 0%; }
-      25%{ background-position:35% 25%; }
-      50%{ background-position:25% 55%; }
-      75%{ background-position:-15% 35%; }
-      100%{ background-position:0% 0%; }
-    }
-    @keyframes bg-drift-2{
-      0%{ background-position:100% 100%; }
-      25%{ background-position:45% 65%; }
-      50%{ background-position:55% 15%; }
-      75%{ background-position:105% 45%; }
-      100%{ background-position:100% 100%; }
-    }
-    .ambient-blob{
-      position:absolute; inset:0; pointer-events:none; z-index:0;
-      border-radius:22px;
-      background-size:200% 200%;
-      will-change:background-color;
-    }
-    .ambient-blob:nth-child(1){ animation:bg-drift-1 25s ease-in-out infinite; }
-    .ambient-blob:nth-child(2){ animation:bg-drift-2 33s ease-in-out infinite; }
-    .card-content{ position:relative; z-index:1; }
-    h1{font-size:40px;margin:0 0 14px}
-    p{color:#9A9B9F;line-height:1.9;font-size:17px;margin:0}
-    .back{
-      display:inline-flex;margin-top:28px;padding:12px 18px;border-radius:999px;
-      border:1px solid rgba(255,255,255,.12);color:#F2F2F0;text-decoration:none;
-    }
-    @media (prefers-reduced-motion:reduce){
-      .ambient-blob{
-        animation:none;
-        background-image:radial-gradient(ellipse 600px 380px, rgba(139,124,250,.18), transparent 70%);
-      }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=Tajawal:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/subscriptions.css">
 </head>
 <body>
-  <div class="wrap">
-    <div class="top">
-      <a class="brand" href="../">HRLX</a>
-    </div>
-    <main class="card">
-      <div class="ambient-blob" style="background-image:radial-gradient(ellipse 600px 380px, rgba(139,124,250,.18), transparent 70%),radial-gradient(ellipse 480px 280px, rgba(139,124,250,.18), transparent 68%)"></div>
-      <div class="ambient-blob" style="background-image:radial-gradient(ellipse 420px 260px, rgba(139,124,250,.18), transparent 72%)"></div>
-      <div class="card-content">
-        <h1>HRLX Subscriptions</h1>
-        <p>هذه الصفحة مخصّصة لتفاصيل تطبيق HRLX لإدارة الاشتراكات والمشتركين. سنبني محتواها الكامل لاحقًا باستخدام الواجهات والمزايا الحقيقية للتطبيق.</p>
-        <a class="back" href="../">العودة إلى HRLX</a>
-      </div>
-    </main>
-  </div>
+  <header class="site-nav"><div class="wrap nav-inner">
+    <a class="brand-mark" href="../" aria-label="HRLX"><span class="brand-icon"><img class="icon-a" src="../assets/images/brand/hrlx-purple.png" alt="HRLX"><img class="icon-b" src="../assets/images/brand/hrlx-blue.png" alt=""></span><span>HRLX</span></a>
+    <nav class="nav-links" aria-label="Primary navigation"><a href="#overview" data-i18n="nav.overview">نظرة عامة</a><a href="#next" data-i18n="nav.features">المزايا</a><a href="../support" data-i18n="nav.support">الدعم</a></nav>
+    <div class="nav-tools"><div class="lang-switch" aria-label="Language"><button id="btnAr" class="active">AR</button><button id="btnEn">EN</button></div><a class="nav-cta" href="#overview" data-i18n="nav.cta">استكشف المزايا</a></div>
+  </div></header>
+  <main>
+    <section class="hero ambient-section"><div class="ambient-blob blob-one"></div><div class="ambient-blob blob-two"></div><div class="wrap hero-grid">
+      <div class="hero-copy reveal"><div class="eyebrow"><span></span><span data-i18n="hero.eyebrow">HRLX Subscriptions</span></div><h1 data-i18n="hero.title">أدر اشتراكاتك، بطريقتك.</h1><p class="hero-desc" data-i18n="hero.desc">تابع المشتركين والاشتراكات والتجديدات والمدفوعات من واجهة واضحة، أو تحدث مع HRLX للوصول إلى المعلومات والمساعدة في تنفيذ المهام.</p><div class="hero-actions"><a class="btn-primary" href="#overview" data-i18n="hero.primary">استكشف المزايا</a><a class="btn-secondary" href="#overview" data-i18n="hero.secondary">تعرّف على HRLX</a></div><p class="trust-line"><span class="trust-mark">✓</span><span data-i18n="hero.trust">الإجراءات التي تغيّر بياناتك تبقى تحت مراجعتك وموافقتك.</span></p></div>
+      <div class="hero-visual reveal" aria-hidden="true"><div class="visual-orbit orbit-one"></div><div class="visual-orbit orbit-two"></div><div class="visual-core"><span class="core-ring"></span><span class="core-glow"></span><img src="../assets/images/brand/hrlx-purple.png" alt=""></div><div class="status-chip chip-top"><span class="chip-dot"></span><span data-i18n="visual.status">Subscription status</span><b>●</b></div><div class="status-chip chip-side"><span data-i18n="visual.renewals">Renewals</span><strong>07</strong></div><div class="status-chip chip-bottom"><span data-i18n="visual.review">Review before changes</span><i>↗</i></div><div class="visual-caption" data-i18n="visual.caption">Information stays close. Actions stay yours.</div></div>
+    </div></section>
+    <section class="intro" id="overview"><div class="wrap intro-grid"><div class="intro-label reveal"><span class="label-line"></span><span data-i18n="intro.label">A clearer way to stay current</span></div><div class="intro-copy reveal"><h2 data-i18n="intro.title">كل ما تحتاجه لمتابعة الاشتراكات، في مساحة واحدة.</h2><p data-i18n="intro.desc">صُمّم HRLX Subscriptions ليقرّب منك الصورة اليومية للمشتركين والاشتراكات والمدفوعات والمشاريع ذات الصلة. استخدم الواجهة بالطريقة المعتادة، أو تحدث مع HRLX عندما يكون الوصول إلى المعلومة أسرع بالكلام.</p></div></div></section>
+    <section class="next-section" id="next"><div class="wrap next-inner reveal"><div><span class="next-kicker" data-i18n="next.kicker">Coming into focus</span><h2 data-i18n="next.title">المزايا التي تجعل يومك أوضح.</h2></div><span class="next-arrow" aria-hidden="true">↓</span></div></section>
+  </main>
 
-  <script>
-  (()=>{
-    const root = document.documentElement;
-    /* ============ MASTER HRLX COLOR ENGINE (same algorithm as homepage) ============
-       ONE source of truth: currentColorIndex, nextColorIndex, transitionProgress.
-       Anchored to wall-clock time so this page renders the same color phase
-       as the homepage. No independent timers, no discrete color swaps. */
-    const HRLX_COLORS = [
-      { rgb:[139,124,250] },
-      { rgb:[91,124,250] },
-      { rgb:[77,191,250] },
-      { rgb:[77,184,127] },
-      { rgb:[250,77,216] },
-      { rgb:[250,77,77] },
-      { rgb:[250,139,77] },
-      { rgb:[232,199,125] }
-    ];
-
-    const HRLX_CYCLE_MS = 8500;
-    let hrlxCurrentIndex = 0;
-    let hrlxNextIndex = 1;
-    let hrlxProgress = 0;
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const hrlxAmbientBlobs = document.querySelectorAll('.ambient-blob');
-
-    function interpolateRGB(rgb1, rgb2, progress){
-      return [
-        Math.round(rgb1[0] + (rgb2[0] - rgb1[0]) * progress),
-        Math.round(rgb1[1] + (rgb2[1] - rgb1[1]) * progress),
-        Math.round(rgb1[2] + (rgb2[2] - rgb1[2]) * progress)
-      ];
-    }
-
-    function renderHRLXFrame(){
-      const current = HRLX_COLORS[hrlxCurrentIndex];
-      const next = HRLX_COLORS[hrlxNextIndex];
-      const [r,g,b] = interpolateRGB(current.rgb, next.rgb, hrlxProgress);
-      const blobColor = `rgba(${r},${g},${b},.18)`;
-
-      hrlxAmbientBlobs.forEach(blob=>{
-        const bgImage = blob.getAttribute('style').match(/background-image:[^;]+/)[0];
-        const updated = bgImage.replace(/rgba\([^)]+\)/g, blobColor);
-        blob.style.backgroundImage = updated.replace('background-image:', '');
-      });
-    }
-
-    function hrlxMasterTick(){
-      const elapsed = Date.now();
-      const cycleCount = Math.floor(elapsed / HRLX_CYCLE_MS);
-      const cyclePos = elapsed - cycleCount * HRLX_CYCLE_MS;
-
-      hrlxCurrentIndex = cycleCount % HRLX_COLORS.length;
-      hrlxNextIndex = (hrlxCurrentIndex + 1) % HRLX_COLORS.length;
-      hrlxProgress = (1 - Math.cos(Math.PI * cyclePos / HRLX_CYCLE_MS)) / 2;
-
-      renderHRLXFrame();
-      requestAnimationFrame(hrlxMasterTick);
-    }
-
-    if(!prefersReducedMotion){
-      requestAnimationFrame(hrlxMasterTick);
-    } else {
-      hrlxAmbientBlobs.forEach(blob=>{
-        blob.style.background = 'radial-gradient(ellipse 900px 580px, rgba(139,124,250,.12), transparent 68%)';
-      });
-    }
-  })();
-  </script>
+  <script src="../js/subscriptions.js"></script>
+</body>
+</html>
