@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#0A0B0D">
   <title>HRLX Subscriptions — HRLX</title>
+  <meta name="description" content="HRLX Subscriptions — إدارة المشتركين والاشتراكات والتجديدات والمدفوعات من مساحة عمل واحدة واضحة.">
+  <link rel="canonical" href="https://hrlxapp.github.io/subscriptions/">
+  <meta property="og:title" content="HRLX Subscriptions — HRLX">
+  <meta property="og:description" content="HRLX Subscriptions — إدارة المشتركين والاشتراكات والتجديدات والمدفوعات من مساحة عمل واحدة واضحة.">
+  <meta property="og:url" content="https://hrlxapp.github.io/subscriptions/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="HRLX Subscriptions — HRLX">
+  <meta name="twitter:description" content="HRLX Subscriptions — إدارة المشتركين والاشتراكات والتجديدات والمدفوعات من مساحة عمل واحدة واضحة.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=Tajawal:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -14,9 +23,40 @@
 <body>
   <header class="site-nav"><div class="wrap nav-inner">
     <a class="brand-mark" href="../" aria-label="HRLX"><span class="brand-icon"><img class="icon-a" src="../assets/images/brand/hrlx-purple.png" alt="HRLX"><img class="icon-b" src="../assets/images/brand/hrlx-blue.png" alt=""></span><span>HRLX</span></a>
-    <nav class="nav-links" aria-label="Primary navigation"><a href="#overview" data-i18n="nav.overview">نظرة عامة</a><a href="#next" data-i18n="nav.features">المزايا</a><a href="../support" data-i18n="nav.support">الدعم</a></nav>
-    <div class="nav-tools"><div class="lang-switch" aria-label="Language"><button id="btnAr" class="active">AR</button><button id="btnEn">EN</button></div><a class="nav-cta" href="#overview" data-i18n="nav.cta">استكشف المزايا</a></div>
+    <a class="nav-back" href="../" data-i18n="nav.back">‹ HRLX</a>
+    <nav class="nav-links" aria-label="Primary navigation">
+      <a href="#overview" data-i18n="nav.overview">نظرة عامة</a>
+      <a href="#next" data-i18n="nav.features">المزايا</a>
+      <div class="product-switch" aria-label="HRLX products">
+        <a href="../subscriptions/" class="active" data-i18n="nav.psSubs">Subscriptions</a>
+        <a href="../haven/" data-i18n="nav.psHaven">Haven</a>
+        <a href="../browser/" data-i18n="nav.psBrowser">Browser</a>
+      </div>
+      <a href="../support/" data-i18n="nav.support">الدعم</a>
+    </nav>
+    <div class="nav-tools">
+      <div class="lang-switch" aria-label="Language"><button id="btnAr" class="active">AR</button><button id="btnEn">EN</button></div>
+      <a class="nav-cta" href="#overview" data-i18n="nav.cta">استكشف المزايا</a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span><span></span></button>
+    </div>
   </div></header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-head">
+      <a href="../" class="brand-mark"><span class="brand-icon"><img class="icon-a" src="../assets/images/brand/hrlx-purple.png" alt="HRLX"><img class="icon-b" src="../assets/images/brand/hrlx-blue.png" alt=""></span><span>HRLX</span></a>
+      <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close">&times;</button>
+    </div>
+    <a href="../" data-i18n="nav.back">‹ HRLX</a>
+    <a href="#overview" data-i18n="nav.overview">نظرة عامة</a>
+    <a href="#next" data-i18n="nav.features">المزايا</a>
+    <a href="../support/" data-i18n="nav.support">الدعم</a>
+    <div class="mobile-product-switch">
+      <span class="mps-label" data-i18n="nav.products">Products</span>
+      <a href="../subscriptions/" class="active" data-i18n="nav.psSubs">Subscriptions</a>
+      <a href="../haven/" data-i18n="nav.psHaven">Haven</a>
+      <a href="../browser/" data-i18n="nav.psBrowser">Browser</a>
+    </div>
+  </div>
   <main>
     <section class="hero ambient-section"><div class="ambient-blob blob-one"></div><div class="ambient-blob blob-two"></div><div class="wrap hero-grid">
       <div class="hero-copy reveal"><div class="eyebrow"><span></span><span data-i18n="hero.eyebrow">HRLX Subscriptions</span></div><h1 data-i18n="hero.title">أدر اشتراكاتك، بطريقتك.</h1><p class="hero-desc" data-i18n="hero.desc">تابع المشتركين والاشتراكات والتجديدات والمدفوعات من واجهة واضحة، أو تحدث مع HRLX للوصول إلى المعلومات والمساعدة في تنفيذ المهام.</p><div class="hero-actions"><a class="btn-primary" href="#overview" data-i18n="hero.primary">استكشف المزايا</a><a class="btn-secondary" href="#overview" data-i18n="hero.secondary">تعرّف على HRLX</a></div><p class="trust-line"><span class="trust-mark">✓</span><span data-i18n="hero.trust">الإجراءات التي تغيّر بياناتك تبقى تحت مراجعتك وموافقتك.</span></p></div>
@@ -69,6 +109,28 @@
     </div></section>
   </main>
 
+  <footer id="footer">
+    <div class="wrap">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="brand-mark"><span class="brand-icon"><img class="icon-a" src="../assets/images/brand/hrlx-purple.png" alt="HRLX"><img class="icon-b" src="../assets/images/brand/hrlx-blue.png" alt=""></span><span>HRLX</span></div>
+          <p data-i18n="footer.tagline">إدارة المشتركين والاشتراكات والمدفوعات من مكان واحد.</p>
+        </div>
+        <div class="footer-links">
+          <a href="../" data-i18n="footer.home">الرئيسية</a>
+          <a href="../subscriptions/" data-i18n="footer.subs">HRLX Subscriptions</a>
+          <a href="../haven/" data-i18n="footer.haven">HRLX Haven</a>
+          <a href="../browser/" data-i18n="footer.browser">HRLX Browser</a>
+          <a href="../support/" data-i18n="footer.support">الدعم</a>
+          <a href="../privacy/" data-i18n="footer.privacy">الخصوصية</a>
+          <a href="../terms/" data-i18n="footer.terms">الشروط</a>
+        </div>
+      </div>
+      <div class="footer-bottom"><span class="copyright" dir="ltr" data-i18n="footer.copy">© 2026 HRLX</span></div>
+    </div>
+  </footer>
+
   <script src="../js/subscriptions.js"></script>
+  <script src="../js/brand-color.js"></script>
 </body>
 </html>

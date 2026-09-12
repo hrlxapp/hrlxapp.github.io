@@ -3,11 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HRLX — Focused tools for modern business</title>
-<meta name="description" content="HRLX builds focused business apps with a shared design language for clarity, speed, and everyday use.">
-<meta property="og:title" content="HRLX — Focused tools for modern business">
-<meta property="og:description" content="Focused business apps. One shared design language.">
+<title>HRLX — One brand. Three focused products.</title>
+<meta name="description" content="HRLX builds focused, independent products — Subscriptions, Haven, and Browser — with one shared design language.">
+<link rel="canonical" href="https://hrlxapp.github.io/">
+<meta property="og:title" content="HRLX — One brand. Three focused products.">
+<meta property="og:description" content="Subscriptions, Haven, and Browser — focused HRLX products, one shared design language.">
+<meta property="og:url" content="https://hrlxapp.github.io/">
 <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HRLX — One brand. Three focused products.">
+<meta name="twitter:description" content="Subscriptions, Haven, and Browser — focused HRLX products, one shared design language.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Tajawal:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -225,6 +230,7 @@
 
   /* ============ SECTIONS ============ */
   .section{ padding:85px 0; }
+  #products, #about{ scroll-margin-top:132px; }
   .section-head{ max-width:640px; margin:0 auto 50px; text-align:center; }
   .section-eyebrow{
     font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
@@ -251,96 +257,58 @@
   }
   .featured-inner{ position:relative; }
 
-  .fp-lead{
-    display:grid; grid-template-columns:1.05fr .95fr; gap:56px; align-items:center;
-    margin-bottom:60px;
+  .product-list{ margin-top:8px; }
+  .product-row{
+    display:grid; grid-template-columns:40px 60px 1fr auto; align-items:center; gap:22px;
+    padding:34px 6px; border-bottom:1px solid var(--border);
+    transition:background .3s ease;
   }
-  @media (max-width:900px){ .fp-lead{ grid-template-columns:1fr; gap:48px; } }
-
-  .fp-badge{
-    display:inline-flex; align-items:center; gap:8px;
-    font-size:12px; font-weight:700; letter-spacing:.09em; text-transform:uppercase;
-    color:var(--p-accent); background:var(--p-soft);
-    padding:7px 14px; border-radius:100px; margin-bottom:24px;
+  .product-row:first-child{ border-top:1px solid var(--border); }
+  .product-row:hover{ background:var(--row-soft); }
+  .pr-index{
+    font-family:'Space Grotesk',sans-serif; font-size:13px; font-weight:700;
+    color:var(--text-3); letter-spacing:.02em;
   }
-  .fp-icon{
-    width:60px; height:60px; border-radius:18px;
-    background:rgba(var(--hrlx-accent-rgb),.14); color:var(--hrlx-accent-color);
+  .pr-icon{
+    width:56px; height:56px; border-radius:17px; flex-shrink:0;
+    background:var(--row-soft); color:var(--row-accent);
     display:flex; align-items:center; justify-content:center;
-    margin-bottom:22px;
-    box-shadow:0 0 34px rgba(var(--hrlx-accent-rgb),.35);
+    transition:transform .3s var(--ease);
   }
-  .fp-icon svg{ width:28px; height:28px; }
-  .fp-lead h3{
-    font-family:'Space Grotesk',sans-serif;
-    font-size:clamp(32px,4.4vw,44px); font-weight:700; letter-spacing:-.025em;
-    margin:0 0 18px; line-height:1.12;
+  .product-row:hover .pr-icon{ transform:scale(1.06); }
+  .pr-icon svg{ width:26px; height:26px; }
+  .pr-body{ min-width:0; }
+  .pr-name-line{ display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:9px; }
+  .pr-name{
+    font-family:'Space Grotesk',sans-serif; font-size:clamp(19px,2.4vw,25px);
+    font-weight:700; letter-spacing:-.01em;
   }
-  [dir="rtl"] .fp-lead h3{ font-family:'Tajawal',sans-serif; font-weight:700; letter-spacing:-.015em; line-height:1.2; }
-  .fp-lead > div > p{ font-size:16.5px; line-height:1.75; color:var(--text-2); margin:0 0 30px; max-width:480px; }
-  [dir="rtl"] .fp-lead > div > p{ line-height:1.8; }
-  .fp-actions{ display:flex; gap:12px; flex-wrap:wrap; }
-  .btn-product{
-    display:inline-flex; align-items:center; gap:9px;
-    background:var(--hrlx-accent-color); color:#0A0B0D;
-    font-size:14.5px; font-weight:700;
-    padding:15px 26px; border-radius:100px; border:none;
-    box-shadow:0 12px 30px -10px rgba(var(--hrlx-accent-rgb),.35);
-    transition:transform .16s ease, filter .2s ease;
+  [dir="rtl"] .pr-name{ font-family:'Tajawal',sans-serif; font-weight:700; }
+  .pr-tag{
+    font-size:11.5px; font-weight:700; letter-spacing:.03em;
+    color:var(--row-accent); background:var(--row-soft);
+    padding:5px 12px; border-radius:100px; white-space:nowrap;
   }
-  .btn-product:hover{ transform:translateY(-1px); filter:brightness(1.08); }
-  .btn-product svg{ width:15px; height:15px; }
-  [dir="rtl"] .btn-product svg{ transform:scaleX(-1); }
+  .pr-desc{ display:block; font-size:14.5px; line-height:1.7; color:var(--text-2); max-width:560px; }
+  [dir="rtl"] .pr-desc{ line-height:1.8; }
+  .pr-cta{
+    display:flex; align-items:center; gap:8px; font-size:14px; font-weight:700;
+    color:var(--text); white-space:nowrap; padding:10px;
+  }
+  .pr-cta svg{ width:15px; height:15px; color:var(--row-accent); transition:transform .25s ease; }
+  [dir="rtl"] .pr-cta svg{ transform:scaleX(-1); }
+  .product-row:hover .pr-cta svg{ transform:translateX(4px); }
+  [dir="rtl"] .product-row:hover .pr-cta svg{ transform:scaleX(-1) translateX(4px); }
 
-  /* phone mockup */
-  .fp-visual{ display:flex; align-items:center; justify-content:center; }
-  .phone{
-    width:290px; flex-shrink:0;
-    border-radius:44px; padding:11px;
-    background:linear-gradient(160deg,#232631,#0d0e13 62%);
-    box-shadow:0 46px 90px -28px rgba(0,0,0,.85), 0 0 0 1px rgba(255,255,255,.05) inset;
+  @media (max-width:760px){
+    .product-row{
+      grid-template-columns:52px 1fr; column-gap:16px; row-gap:12px; padding:26px 4px;
+    }
+    .pr-index{ display:none; }
+    .pr-icon{ grid-column:1; grid-row:1; width:48px; height:48px; }
+    .pr-body{ grid-column:2; grid-row:1; }
+    .pr-cta{ grid-column:1/-1; grid-row:2; padding-inline-start:64px; padding-top:0; }
   }
-  .phone-screen{
-    background:#08090D; border-radius:34px; overflow:hidden;
-    padding:18px 16px 22px; min-height:520px;
-    display:flex; flex-direction:column; gap:14px;
-  }
-  .ph-status{ display:flex; justify-content:space-between; font-size:11px; color:var(--text-2); font-weight:600; padding:2px 6px 4px; }
-  .ph-title{ font-size:19px; font-weight:700; padding:0 4px; }
-  .ph-summary{ display:flex; gap:9px; }
-  .ph-stat{ flex:1; background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:11px 12px; }
-  .ph-stat span{ display:block; font-size:10px; color:var(--text-3); margin-bottom:5px; font-weight:600; }
-  .ph-stat b{ font-size:17px; font-weight:700; letter-spacing:-.01em; }
-  .ph-stat.accent b{ color:var(--p-accent); }
-  .ph-label{ font-size:11px; color:var(--text-3); font-weight:600; padding:4px 4px 0; }
-  .ph-row{
-    display:flex; align-items:center; gap:11px;
-    background:var(--surface); border:1px solid var(--border);
-    border-radius:14px; padding:11px 12px;
-  }
-  .ph-av{ width:32px; height:32px; border-radius:10px; background:var(--p-soft); flex-shrink:0; display:flex; align-items:center; justify-content:center; color:var(--p-accent); font-size:12px; font-weight:700; }
-  .ph-body{ flex:1; min-width:0; }
-  .ph-body i{ display:block; height:7px; border-radius:4px; background:rgba(255,255,255,.1); margin-bottom:6px; }
-  .ph-body i:last-child{ margin-bottom:0; opacity:.6; }
-  .ph-pill{ font-size:10px; font-weight:700; padding:4px 9px; border-radius:100px; flex-shrink:0; background:var(--p-soft); color:var(--p-accent); }
-  .ph-pill.warn{ background:rgba(255,159,69,.15); color:#FF9F45; }
-  .ph-pill.off{ background:rgba(255,255,255,.06); color:var(--text-3); }
-
-  /* feature grid */
-  .fp-features{
-    display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
-    background:var(--border); border:1px solid var(--border);
-    border-radius:var(--radius-md); overflow:hidden;
-  }
-  @media (max-width:860px){ .fp-features{ grid-template-columns:1fr 1fr; } }
-  @media (max-width:480px){ .fp-features{ grid-template-columns:1fr; } }
-  .fp-feature{ background:var(--bg-2); padding:30px 24px; transition:background .25s ease; display:flex; flex-direction:column; min-height:200px; }
-  .fp-feature:hover{ background:var(--surface); }
-  .fp-feature .fi{ width:34px; height:34px; color:var(--hrlx-accent-color); margin-bottom:16px; }
-  .fp-feature .fi svg{ width:22px; height:22px; }
-  .fp-feature h4{ font-size:15px; font-weight:700; margin:0 0 8px; letter-spacing:-.01em; line-height:1.35; }
-  .fp-feature p{ font-size:13.5px; line-height:1.65; color:var(--text-2); margin:0; flex-grow:1; }
-  [dir="rtl"] .fp-feature h4{ line-height:1.4; }
 
   /* ============ USER BENEFITS ============ */
   .benefits{
@@ -364,9 +332,9 @@
     margin-bottom:18px; flex-shrink:0;
   }
   .benefit-icon svg{ width:21px; height:21px; }
-  .benefit h4{ font-size:17px; font-weight:700; margin:0 0 9px; letter-spacing:-.01em; line-height:1.35; }
+  .benefit h3{ font-size:17px; font-weight:700; margin:0 0 9px; letter-spacing:-.01em; line-height:1.35; }
   .benefit p{ font-size:14px; line-height:1.7; color:var(--text-2); margin:0; flex-grow:1; }
-  [dir="rtl"] .benefit h4{ line-height:1.4; }
+  [dir="rtl"] .benefit h3{ line-height:1.4; }
   @media (max-width:760px){ .benefits-grid{ grid-template-columns:1fr; } }
 
   /* ============ CTA ============ */
@@ -398,6 +366,12 @@
     transition:color .2s ease;
   }
   .footer-links a:hover{ color:var(--text); }
+  .footer-groups{ display:flex; gap:56px; flex-wrap:wrap; }
+  .footer-col{ display:flex; flex-direction:column; gap:12px; min-width:130px; }
+  .footer-col-label{ font-size:11.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--text-3); }
+  [dir="rtl"] .footer-col-label{ letter-spacing:0; }
+  .footer-col a{ font-size:14px; color:var(--text-2); transition:color .2s ease; }
+  .footer-col a:hover{ color:var(--text); }
   .footer-bottom{
     display:flex; align-items:center; justify-content:space-between;
     padding-top:26px; border-top:1px solid var(--border);
@@ -494,19 +468,13 @@
     .btn-secondary{ padding:12px 19px; font-size:14px; }
 
     .section{ padding:60px 0; }
-    .featured.section{ padding:44px 0 56px; }
-    .fp-lead{ gap:24px; margin-bottom:34px; }
-    .fp-icon{ width:56px; height:56px; margin-bottom:18px; }
-    .fp-lead h3{ font-size:clamp(29px,8.4vw,35px); margin-bottom:10px; }
-    .fp-lead > div > p{ font-size:15.5px; line-height:1.7; max-width:340px; margin-bottom:16px; }
-    [dir="rtl"] .fp-lead > div > p{ line-height:1.8; }
-    .btn-product{ width:100%; justify-content:center; padding:14px 18px; }
-    .phone{ width:clamp(248px,72vw,280px); border-radius:40px; padding:10px; }
-    .phone-screen{ border-radius:31px; min-height:460px; padding:16px 14px 20px; gap:12px; }
-    .fp-feature{ min-height:0; padding:18px 18px; }
-    .fp-feature .fi{ margin-bottom:9px; }
-    .fp-feature h4{ margin-bottom:5px; }
-    .fp-feature p{ line-height:1.58; }
+    .featured.section{ padding:44px 0 50px; }
+    .product-row{ padding:22px 2px; gap:12px; }
+    .pr-icon{ width:44px; height:44px; border-radius:14px; }
+    .pr-icon svg{ width:22px; height:22px; }
+    .pr-name{ font-size:19px; }
+    .pr-desc{ max-width:none; }
+    .pr-cta{ padding-inline-start:56px; font-size:13.5px; }
 
     .benefits{ padding:54px 0 18px; }
     .section-head{ margin-bottom:34px; }
@@ -516,7 +484,7 @@
     .benefits-grid{ gap:12px; }
     .benefit{ min-height:0; padding:22px 20px; }
     .benefit-icon{ margin-bottom:13px; }
-    .benefit h4{ margin-bottom:6px; }
+    .benefit h3{ margin-bottom:6px; }
     .benefit p{ line-height:1.65; }
 
     .cta-final{ padding:68px 0; }
@@ -557,16 +525,16 @@
   <div class="wrap nav-global-inner">
     <a href="#top" class="brand-mark"><span class="brand-icon"><img class="icon-a" src="assets/images/brand/hrlx-purple.png" alt="HRLX"><img class="icon-b" src="assets/images/brand/hrlx-blue.png" alt="" style="opacity:0"></span>HRLX</a>
     <nav class="nav-links">
-      <a href="/subscriptions/" data-i18n="nav.product">App</a>
-      <a href="#about" data-i18n="nav.features">Features</a>
-      <a href="/support" data-i18n="nav.support">Support</a>
+      <a href="#products" data-i18n="nav.products">Products</a>
+      <a href="#about" data-i18n="nav.features">About</a>
+      <a href="/support/" data-i18n="nav.support">Support</a>
     </nav>
     <div class="nav-right">
       <div class="lang-switch">
         <button id="btnAr" class="active">AR</button>
         <button id="btnEn">EN</button>
       </div>
-      <a href="#product" class="btn-nav-cta" data-i18n="nav.cta">View Product</a>
+      <a href="#products" class="btn-nav-cta" data-i18n="nav.cta">Explore products</a>
       <button class="hamburger" id="hamburgerBtn" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -577,9 +545,9 @@
     <a href="#top" class="brand-mark"><span class="brand-icon"><img class="icon-a" src="assets/images/brand/hrlx-purple.png" alt="HRLX"><img class="icon-b" src="assets/images/brand/hrlx-blue.png" alt="" style="opacity:0"></span>HRLX</a>
     <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close">&times;</button>
   </div>
-  <a href="/subscriptions/" data-i18n="nav.product">App</a>
-  <a href="#about" data-i18n="nav.features">Features</a>
-  <a href="/support" data-i18n="nav.support">Support</a>
+  <a href="#products" data-i18n="nav.products">Products</a>
+  <a href="#about" data-i18n="nav.features">About</a>
+  <a href="/support/" data-i18n="nav.support">Support</a>
 </div>
 
 <!-- Product bar: renders automatically once PRODUCTS holds more than one entry -->
@@ -595,76 +563,56 @@
     <div class="wrap hero-inner">
       <span class="hero-eyebrow"><span class="d"></span><span data-i18n="hero.eyebrow">HRLX</span></span>
       <h1 class="disp">HRLX</h1>
-      <p class="tagline" data-i18n="hero.tagline">Business tools, made clearer.</p>
-      <p class="desc" data-i18n="hero.desc">HRLX builds focused business apps with a clear, fast experience designed for everyday use.</p>
+      <p class="tagline" data-i18n="hero.tagline">One brand. Focused products.</p>
+      <p class="desc" data-i18n="hero.desc">HRLX builds independent, focused products — from managing subscriptions, to a private space of your own, to clearer browsing — under one shared design language.</p>
       <div class="hero-actions">
-        <a href="/subscriptions/" class="btn-primary" data-i18n="hero.cta1">Explore the app</a>
-        <a href="#about" class="btn-secondary" data-i18n="hero.cta2">Features</a>
+        <a href="#products" class="btn-primary" data-i18n="hero.cta1">Explore products</a>
+        <a href="#about" class="btn-secondary" data-i18n="hero.cta2">About HRLX</a>
       </div>
     </div>
   </section>
 
-  <!-- ============ FEATURED PRODUCT ============ -->
-  <section class="section featured" id="product">
+  <!-- ============ PRODUCT FAMILY ============ -->
+  <section class="section featured" id="products">
     <div class="ambient-blob" style="background-image:radial-gradient(ellipse 880px 560px, rgba(139,124,250,.18), transparent 66%),radial-gradient(ellipse 700px 450px, rgba(139,124,250,.18), transparent 71%)"></div>
     <div class="ambient-blob" style="background-image:radial-gradient(ellipse 580px 340px, rgba(139,124,250,.18), transparent 68%)"></div>
     <div class="wrap featured-inner">
-      <div class="fp-lead reveal">
-        <div>
-          <div class="fp-icon">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M12 2.5a4.6 4.6 0 014.6 4.6v2.8a4.6 4.6 0 01-9.2 0V7.1A4.6 4.6 0 0112 2.5z" stroke="currentColor" stroke-width="1.7"/><path d="M5.6 20.5c1.3-4 3.9-6 6.4-6s5.1 2 6.4 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
-          </div>
-          <h3 class="disp">HRLX Subscriptions</h3>
-          <p data-i18n="fp.desc">Manage subscribers, subscriptions, renewals, payments, and subscription status from one clear workspace.</p>
-          <div class="fp-actions">
-            <a href="/subscriptions/" class="btn-product">
-              <span data-i18n="fp.cta">Explore HRLX Subscriptions</span>
-              <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
-          </div>
-        </div>
-
-        <div class="fp-visual">
-          <div class="phone">
-            <div class="phone-screen">
-              <div class="ph-status"><span>9:41</span><span>●●●</span></div>
-              <div class="ph-title" data-i18n="ph.title">Subscribers</div>
-              <div class="ph-summary">
-                <div class="ph-stat accent"><span data-i18n="ph.s1">Active</span><b data-i18n="ph.s1v">128</b></div>
-                <div class="ph-stat"><span data-i18n="ph.s2">Due soon</span><b data-i18n="ph.s2v">7</b></div>
-              </div>
-              <div class="ph-label" data-i18n="ph.label">Recent</div>
-              <div class="ph-row"><div class="ph-av">A</div><div class="ph-body"><i style="width:64%"></i><i style="width:36%"></i></div><span class="ph-pill" data-i18n="ph.active">Active</span></div>
-              <div class="ph-row"><div class="ph-av">M</div><div class="ph-body"><i style="width:52%"></i><i style="width:30%"></i></div><span class="ph-pill warn" data-i18n="ph.soon">3 days</span></div>
-              <div class="ph-row"><div class="ph-av">S</div><div class="ph-body"><i style="width:58%"></i><i style="width:34%"></i></div><span class="ph-pill" data-i18n="ph.active">Active</span></div>
-              <div class="ph-row"><div class="ph-av">K</div><div class="ph-body"><i style="width:46%"></i><i style="width:26%"></i></div><span class="ph-pill off" data-i18n="ph.expired">Expired</span></div>
-              <div class="ph-row"><div class="ph-av">R</div><div class="ph-body"><i style="width:60%"></i><i style="width:32%"></i></div><span class="ph-pill" data-i18n="ph.active">Active</span></div>
-            </div>
-          </div>
-        </div>
+      <div class="section-head reveal">
+        <div class="section-eyebrow" data-i18n="products.eyebrow">HRLX PRODUCTS</div>
+        <h2 data-i18n="products.title">One brand. Three focused products.</h2>
+        <p data-i18n="products.desc">Each HRLX product is built for one purpose, with the same shared design language and care.</p>
       </div>
 
-      <div class="fp-features reveal">
-        <div class="fp-feature">
-          <div class="fi"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.6" stroke="currentColor" stroke-width="1.7"/><path d="M5.5 19.5c1.2-3.6 3.8-5.4 6.5-5.4s5.3 1.8 6.5 5.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
-          <h4 data-i18n="feat.t1">Subscribers</h4>
-          <p data-i18n="feat.d1">Manage subscriber data and track their details in one place.</p>
-        </div>
-        <div class="fp-feature">
-          <div class="fi"><svg viewBox="0 0 24 24" fill="none"><path d="M20 12a8 8 0 11-2.6-5.9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M20 4v4h-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          <h4 data-i18n="feat.t2">Subscriptions & Renewals</h4>
-          <p data-i18n="feat.d2">Track subscription status, dates, and upcoming renewals with clarity.</p>
-        </div>
-        <div class="fp-feature">
-          <div class="fi"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="18" height="12" rx="3" stroke="currentColor" stroke-width="1.7"/><path d="M3 10h18" stroke="currentColor" stroke-width="1.7"/><path d="M7 14.5h3.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
-          <h4 data-i18n="feat.t3">Payments</h4>
-          <p data-i18n="feat.d3">Record and track payments and amounts connected to subscribers.</p>
-        </div>
-        <div class="fp-feature">
-          <div class="fi"><svg viewBox="0 0 24 24" fill="none"><path d="M4 20V10M10 20V5M16 20v-7M22 20H2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
-          <h4 data-i18n="feat.t4">At a Glance</h4>
-          <p data-i18n="feat.d4">View statuses and important information without searching across multiple screens.</p>
-        </div>
+      <div class="product-list">
+        <a href="/subscriptions/" class="product-row reveal" style="--row-accent:#8B7CFA;--row-soft:rgba(139,124,250,.14)">
+          <span class="pr-index">01</span>
+          <span class="pr-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2.5a4.6 4.6 0 014.6 4.6v2.8a4.6 4.6 0 01-9.2 0V7.1A4.6 4.6 0 0112 2.5z" stroke="currentColor" stroke-width="1.7"/><path d="M5.6 20.5c1.3-4 3.9-6 6.4-6s5.1 2 6.4 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+          <span class="pr-body">
+            <span class="pr-name-line"><span class="pr-name disp">HRLX Subscriptions</span><span class="pr-tag" data-i18n="products.subs.tag">For business</span></span>
+            <span class="pr-desc" data-i18n="products.subs.desc">Manage subscribers, subscriptions, renewals, and payments from one clear workspace.</span>
+          </span>
+          <span class="pr-cta"><span data-i18n="products.subs.cta">Explore Subscriptions</span><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </a>
+
+        <a href="/haven/" class="product-row reveal" style="--row-accent:#5B8DEF;--row-soft:rgba(91,141,239,.14)">
+          <span class="pr-index">02</span>
+          <span class="pr-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="8" height="8" rx="2" stroke="currentColor" stroke-width="1.6"/><rect x="13" y="3" width="8" height="8" rx="2" stroke="currentColor" stroke-width="1.6"/><rect x="3" y="13" width="8" height="8" rx="2" stroke="currentColor" stroke-width="1.6"/><rect x="13" y="13" width="8" height="8" rx="2" stroke="currentColor" stroke-width="1.6"/></svg></span>
+          <span class="pr-body">
+            <span class="pr-name-line"><span class="pr-name disp">HRLX Haven</span><span class="pr-tag" data-i18n="products.haven.tag">Private space</span></span>
+            <span class="pr-desc" data-i18n="products.haven.desc">A private, encrypted space for your photos, videos, and files — organized into calm collections, away from the noise of your day.</span>
+          </span>
+          <span class="pr-cta"><span data-i18n="products.haven.cta">Explore Haven</span><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </a>
+
+        <a href="/browser/" class="product-row reveal" style="--row-accent:#34D399;--row-soft:rgba(52,211,153,.14)">
+          <span class="pr-index">03</span>
+          <span class="pr-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M15.2 8.8l-1.6 4.8-4.8 1.6 1.6-4.8 4.8-1.6z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg></span>
+          <span class="pr-body">
+            <span class="pr-name-line"><span class="pr-name disp">HRLX Browser</span><span class="pr-tag" data-i18n="products.browser.tag">Clearer browsing</span></span>
+            <span class="pr-desc" data-i18n="products.browser.desc">A focused browser that gives you clearer control over what you see, faster and calmer browsing, and smarter media and download handling.</span>
+          </span>
+          <span class="pr-cta"><span data-i18n="products.browser.cta">Explore Browser</span><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </a>
       </div>
     </div>
   </section>
@@ -675,9 +623,9 @@
     <div class="ambient-blob" style="background-image:radial-gradient(ellipse 650px 380px, rgba(139,124,250,.18), transparent 70%)"></div>
     <div class="wrap">
       <div class="section-head reveal">
-        <div class="section-eyebrow" data-i18n="benefits.eyebrow">Why HRLX Subscriptions</div>
-        <h2 data-i18n="benefits.title">Built for clarity and speed.</h2>
-        <p data-i18n="benefits.desc">Everything designed so the information you need is always within reach.</p>
+        <div class="section-eyebrow" data-i18n="benefits.eyebrow">Why HRLX</div>
+        <h2 data-i18n="benefits.title">One design language. Each product its own purpose.</h2>
+        <p data-i18n="benefits.desc">Whichever product you use, you get the same clarity, speed, and attention to detail.</p>
       </div>
 
       <div class="benefits-grid">
@@ -685,23 +633,23 @@
           <div class="benefit-icon">
             <svg viewBox="0 0 24 24" fill="none"><path d="M4 12h16M12 4v16" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
           </div>
-          <h4 data-i18n="benefits.t1">Quick access to information</h4>
-          <p data-i18n="benefits.d1">Find what you need instantly without navigating through layers.</p>
+          <h3 data-i18n="benefits.t1">One product, one purpose</h3>
+          <p data-i18n="benefits.d1">Every HRLX app is built to do one thing well, instead of everything at once.</p>
         </div>
 
         <div class="benefit reveal">
           <div class="benefit-icon">
             <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.7"/><path d="M12 8v4l2.5 1.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
-          <h4 data-i18n="benefits.t2">Know what needs attention</h4>
-          <p data-i18n="benefits.d2">Important statuses and upcoming events stay visible so nothing slips away.</p>
+          <h3 data-i18n="benefits.t2">The same design language</h3>
+          <p data-i18n="benefits.d2">A calm interface and refined dark identity carries across every HRLX product, so it always feels like the same family.</p>
         </div>
 
         <div class="benefit reveal">
           <div class="benefit-icon">
             <svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4 4L19 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
-          <h4 data-i18n="benefits.t3">Clear, uncluttered interface</h4>
+          <h3 data-i18n="benefits.t3">Clear, uncluttered interface</h3>
           <p data-i18n="benefits.d3">Only the controls you use, only the information you need, nothing more.</p>
         </div>
       </div>
@@ -713,10 +661,12 @@
     <div class="ambient-blob" style="background-image:radial-gradient(ellipse 680px 380px, rgba(139,124,250,.18), transparent 64%),radial-gradient(ellipse 540px 300px, rgba(139,124,250,.18), transparent 71%)"></div>
     <div class="ambient-blob" style="background-image:radial-gradient(ellipse 420px 240px, rgba(139,124,250,.18), transparent 68%)"></div>
     <div class="wrap">
-      <h2 class="disp reveal" data-i18n="cta.title">HRLX Subscriptions</h2>
-      <p class="reveal" data-i18n="cta.desc">Manage your subscriptions and subscribers from one clear place.</p>
+      <h2 class="disp reveal" data-i18n="cta.title">Which HRLX product fits you today?</h2>
+      <p class="reveal" data-i18n="cta.desc">Explore Subscriptions to run your business, Haven for a private space of your own, or Browser for clearer browsing.</p>
       <div class="hero-actions reveal">
-        <a href="/subscriptions/" class="btn-primary" data-i18n="cta.cta">Explore the app</a>
+        <a href="/subscriptions/" class="btn-secondary">HRLX Subscriptions</a>
+        <a href="/haven/" class="btn-secondary">HRLX Haven</a>
+        <a href="/browser/" class="btn-secondary">HRLX Browser</a>
       </div>
     </div>
   </section>
@@ -728,13 +678,22 @@
     <div class="footer-top">
       <div class="footer-brand">
         <div class="brand-mark"><span class="brand-icon"><img class="icon-a" src="assets/images/brand/hrlx-purple.png" alt="HRLX"><img class="icon-b" src="assets/images/brand/hrlx-blue.png" alt="" style="opacity:0"></span>HRLX</div>
+        <p data-i18n="footer.blurb">One brand. Focused products for every part of your day.</p>
       </div>
 
-      <div class="footer-links">
-        <a href="/subscriptions/" data-i18n="footer.subs">HRLX Subscriptions</a>
-        <a href="/support" data-i18n="nav.support">Support</a>
-        <a href="/privacy" data-i18n="footer.privacy">Privacy</a>
-        <a href="/terms" data-i18n="footer.terms">Terms</a>
+      <div class="footer-groups">
+        <div class="footer-col">
+          <span class="footer-col-label" data-i18n="footer.productsLabel">Products</span>
+          <a href="/subscriptions/" data-i18n="footer.subs">HRLX Subscriptions</a>
+          <a href="/haven/" data-i18n="footer.haven">HRLX Haven</a>
+          <a href="/browser/" data-i18n="footer.browser">HRLX Browser</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-label" data-i18n="footer.companyLabel">Company</span>
+          <a href="/support/" data-i18n="nav.support">Support</a>
+          <a href="/privacy/" data-i18n="footer.privacy">Privacy</a>
+          <a href="/terms/" data-i18n="footer.terms">Terms</a>
+        </div>
       </div>
     </div>
     <div class="footer-bottom">
@@ -755,76 +714,83 @@
   const PRODUCTS = [
     {
       id:'subscriptions',
-      path:'/subscriptions',
+      path:'/subscriptions/',
       accent:'#8B7CFA',
       soft:'rgba(139,124,250,.14)',
       glow:'rgba(139,124,250,.35)',
       name:{ en:'Subscriptions', ar:'الاشتراكات' }
+    },
+    {
+      id:'haven',
+      path:'/haven/',
+      accent:'#5B8DEF',
+      soft:'rgba(91,141,239,.14)',
+      glow:'rgba(91,141,239,.35)',
+      name:{ en:'Haven', ar:'Haven' }
+    },
+    {
+      id:'browser',
+      path:'/browser/',
+      accent:'#34D399',
+      soft:'rgba(52,211,153,.14)',
+      glow:'rgba(52,211,153,.35)',
+      name:{ en:'Browser', ar:'Browser' }
     }
-    /* future products go here */
   ];
 
   const CONTENT = {
     en:{ dir:'ltr',
-      nav:{ product:'App', features:'Features', support:'Support', cta:'View Product', overview:'Overview' },
+      nav:{ products:'Products', features:'About', support:'Support', cta:'Explore products', overview:'Overview' },
       hero:{ eyebrow:'HRLX',
-        tagline:'Business tools, made clearer.',
-        desc:'HRLX builds focused business apps with a clear, fast experience designed for everyday use.',
-        cta1:'Explore the app', cta2:'Features' },
-      fp:{ desc:'Manage subscribers, subscriptions, renewals, payments, and subscription status from one clear workspace.',
-        cta:'Explore HRLX Subscriptions' },
-      ph:{ title:'Subscribers', s1:'Active', s1v:'128', s2:'Due soon', s2v:'7', label:'Recent',
-        active:'Active', soon:'3 days', expired:'Expired' },
-      feat:{ t1:'Subscribers', d1:'Manage subscriber data and track their details in one place.',
-        t2:'Subscriptions & Renewals', d2:'Track subscription status, dates, and upcoming renewals with clarity.',
-        t3:'Payments', d3:'Record and track payments and amounts connected to subscribers.',
-        t4:'At a Glance', d4:'View statuses and important information without searching across multiple screens.' },
-      benefits:{ eyebrow:'Why HRLX Subscriptions',
-        title:'Built for clarity and speed.',
-        desc:'Everything designed so the information you need is always within reach.',
-        t1:'Quick access to information', d1:'Find what you need instantly without navigating through layers.',
-        t2:'Know what needs attention', d2:'Important statuses and upcoming events stay visible so nothing slips away.',
+        tagline:'One brand. Focused products.',
+        desc:'HRLX builds independent, focused products — from managing subscriptions, to a private space of your own, to clearer browsing — under one shared design language.',
+        cta1:'Explore products', cta2:'About HRLX' },
+      products:{ eyebrow:'HRLX PRODUCTS',
+        title:'One brand. Three focused products.',
+        desc:'Each HRLX product is built for one purpose, with the same shared design language and care.',
+        subs:{ tag:'For business', desc:'Manage subscribers, subscriptions, renewals, and payments from one clear workspace.', cta:'Explore Subscriptions' },
+        haven:{ tag:'Private space', desc:'A private, encrypted space for your photos, videos, and files — organized into calm collections, away from the noise of your day.', cta:'Explore Haven' },
+        browser:{ tag:'Clearer browsing', desc:'A focused browser that gives you clearer control over what you see, faster and calmer browsing, and smarter media and download handling.', cta:'Explore Browser' } },
+      benefits:{ eyebrow:'Why HRLX',
+        title:'One design language. Each product its own purpose.',
+        desc:'Whichever product you use, you get the same clarity, speed, and attention to detail.',
+        t1:'One product, one purpose', d1:'Every HRLX app is built to do one thing well, instead of everything at once.',
+        t2:'The same design language', d2:'A calm interface and refined dark identity carries across every HRLX product, so it always feels like the same family.',
         t3:'Clear, uncluttered interface', d3:'Only the controls you use, only the information you need, nothing more.' },
-      cta:{ title:'HRLX Subscriptions', desc:'Manage your subscriptions and subscribers from one clear place.', cta:'Explore the app' },
-      footer:{ subs:'HRLX Subscriptions',
+      cta:{ title:'Which HRLX product fits you today?', desc:'Explore Subscriptions to run your business, Haven for a private space of your own, or Browser for clearer browsing.' },
+      footer:{ blurb:'One brand. Focused products for every part of your day.',
+        productsLabel:'Products', companyLabel:'Company',
+        subs:'HRLX Subscriptions', haven:'HRLX Haven', browser:'HRLX Browser',
         privacy:'Privacy', terms:'Terms', copy:'© 2026 HRLX' }
     },
     ar:{ dir:'rtl',
-      nav:{ product:'التطبيق', features:'المزايا', support:'الدعم', cta:'استعرض المنتج', overview:'نظرة عامة' },
+      nav:{ products:'المنتجات', features:'عن HRLX', support:'الدعم', cta:'استعرض المنتجات', overview:'نظرة عامة' },
       hero:{ eyebrow:'HRLX',
-        tagline:'أدوات أعمال، بوضوح أكثر.',
-        desc:'تبني HRLX تطبيقات أعمال مركّزة بتجربة واضحة وسريعة للاستخدام اليومي.',
-        cta1:'استكشف التطبيق', cta2:'المزايا' },
-      fp:{ desc:'إدارة المشتركين والاشتراكات والتجديدات والمدفوعات وحالات الاشتراك من مساحة واحدة واضحة.',
-        cta:'استكشف HRLX Subscriptions' },
-      ph:{ title:'المشتركون', s1:'نشط', s1v:'١٢٨', s2:'قرب الاستحقاق', s2v:'٧', label:'الأحدث',
-        active:'نشط', soon:'٣ أيام', expired:'منتهي' },
-      feat:{ t1:'المشتركين', d1:'إدارة بيانات المشتركين ومتابعة تفاصيلهم في مكان واحد.',
-        t2:'الاشتراكات والتجديدات', d2:'متابعة حالة الاشتراك والتواريخ والتجديدات القادمة بوضوح.',
-        t3:'المدفوعات', d3:'تسجيل ومتابعة المدفوعات والمبالغ المرتبطة بالمشتركين.',
-        t4:'نظرة سريعة', d4:'عرض الحالات والمعلومات المهمة بدون الحاجة للبحث بين عدة شاشات.' },
-      benefits:{ eyebrow:'لماذا HRLX Subscriptions',
-        title:'مصمّم للوضوح والسرعة.',
-        desc:'كل شيء مصمّم بحيث تبقى المعلومات التي تحتاجها دائمًا في متناول يديك.',
-        t1:'سرعة الوصول للمعلومة', d1:'جد ما تحتاجه فورًا بدون التنقل عبر طبقات.',
-        t2:'معرفة ما يحتاج الانتباه', d2:'الحالات المهمة والأحداث القادمة تبقى واضحة حتى لا يضيع شيء.',
-        t3:'واجهة واضحة وغير مزدحمة', d3:'فقط الأيقونات التي تستخدمها، فقط المعلومات التي تحتاجها، لا أكثر.' },
-      cta:{ title:'HRLX Subscriptions', desc:'أدر اشتراكاتك ومشتركيك من مكان واحد واضح.', cta:'استكشف التطبيق' },
-      footer:{ subs:'HRLX Subscriptions',
+        tagline:'علامة واحدة. منتجات مركّزة.',
+        desc:'تبني HRLX منتجات مستقلة ومركّزة — من إدارة الاشتراكات، إلى مساحتك الخاصة، إلى تصفح أوضح للويب — ضمن لغة تصميم واحدة.',
+        cta1:'استعرض المنتجات', cta2:'تعرّف على HRLX' },
+      products:{ eyebrow:'منتجات HRLX',
+        title:'علامة واحدة. ثلاثة منتجات مركّزة.',
+        desc:'كل منتج من HRLX مبني لهدف واحد بوضوح، ضمن نفس لغة التصميم والجودة.',
+        subs:{ tag:'لإدارة الأعمال', desc:'إدارة المشتركين والاشتراكات والتجديدات والمدفوعات من مساحة عمل واحدة واضحة.', cta:'استكشف Subscriptions' },
+        haven:{ tag:'خاص ومشفّر', desc:'مساحة خاصة ومشفّرة لصورك وفيديوهاتك وملفاتك، منظّمة ضمن مجموعات هادئة بعيدًا عن يومك المزدحم.', cta:'استكشف Haven' },
+        browser:{ tag:'تصفح أوضح', desc:'متصفح مركّز يمنحك تحكمًا أوضح في ما تراه، وتصفحًا أسرع وأهدأ، وتعاملًا أذكى مع الوسائط والتنزيلات.', cta:'استكشف Browser' } },
+      benefits:{ eyebrow:'لماذا HRLX',
+        title:'لغة تصميم واحدة، لكل منتج غرضه.',
+        desc:'مهما كان المنتج الذي تستخدمه، تحصل على نفس الوضوح والسرعة والاهتمام بالتفاصيل.',
+        t1:'منتج واحد لكل غرض', d1:'كل تطبيق من HRLX مبني ليقوم بشيء واحد بإتقان، بدل حشر كل شيء في مكان واحد.',
+        t2:'نفس لغة التصميم', d2:'واجهة هادئة وهوية داكنة أنيقة تتكرر عبر كل منتجات HRLX، فتشعر أنك في العائلة نفسها أينما ذهبت.',
+        t3:'واجهة واضحة وغير مزدحمة', d3:'فقط الأزرار التي تستخدمها، فقط المعلومات التي تحتاجها، لا أكثر.' },
+      cta:{ title:'أيّ منتج HRLX يناسبك اليوم؟', desc:'استكشف Subscriptions لإدارة عملك، أو Haven لمساحتك الخاصة، أو Browser لتصفح أوضح.' },
+      footer:{ blurb:'علامة واحدة، منتجات مركّزة لكل جانب من يومك.',
+        productsLabel:'المنتجات', companyLabel:'الشركة',
+        subs:'HRLX Subscriptions', haven:'HRLX Haven', browser:'HRLX Browser',
         privacy:'الخصوصية', terms:'الشروط', copy:'© 2026 HRLX' }
     }
   };
 
   let lang = localStorage.getItem('hrlx-lang') || 'ar';
   const root = document.documentElement;
-
-  /* apply the featured product's accent to the whole product section */
-  function applyProductAccent(p){
-    root.style.setProperty('--p-accent', p.accent);
-    root.style.setProperty('--p-soft', p.soft);
-    root.style.setProperty('--p-glow', p.glow);
-  }
-  applyProductAccent(PRODUCTS[0]);
 
   /* product bar only exists when there is more than one product to switch between */
   function renderProductBar(){
